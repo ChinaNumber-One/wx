@@ -159,7 +159,6 @@ Page({
       buildTime: res.data.showapi_res_body.hotalList[0].renovationTime.substring(0, 4),
       dataInfo: res.data.showapi_res_body.hotalList[0],
     })
-    console.log(this.data.dataInfo)
     //酒店经纬度  计算距离 还需获取 定位的经纬度
     if (res.data.showapi_res_body.hotalList[0].hotalGPS !== []){
       this.setData({
@@ -179,7 +178,6 @@ Page({
     this.getData(this.data.hotelRoomInterface ,roomQuery, this.getRoomSucc.bind(this))
   },
   getRoomSucc(res){
-    console.log(res.data.showapi_res_body.roomList)
     if (res.data.showapi_res_body.roomList && this.data.imgList.roomType){
       for (var i = 0; i < res.data.showapi_res_body.roomList.length; i++){
         res.data.showapi_res_body.roomList[i].imgUrl = []
@@ -245,7 +243,6 @@ Page({
     this.data.roomList.sort(function(x,y){
       return x.priceInfo.minPrice - y.priceInfo.minPrice
     })
-    console.log(this.data.roomList)
     this.setData({
       roomList:this.data.roomList
     })
@@ -282,7 +279,11 @@ Page({
     });
   },
   getDataError() {
-    alert("服务器发生错误！")
+    wx.showToast({
+      title: '服务端发生错误！',
+      icon: 'none',
+      duration: 2000
+    })
   },
   ajaxComplete() {
     wx.hideLoading()
@@ -334,7 +335,6 @@ Page({
     this.setData({
       roomInfo: this.data.roomList[e.currentTarget.dataset.index]
     })
-    console.log(this.data.roomInfo)
    
     wx.getSystemInfo({
       success: function (res) {

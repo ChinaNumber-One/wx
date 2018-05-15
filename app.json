@@ -23,7 +23,8 @@
     "pages/mine/grade/grade",
     "pages/mine/vipcn/vipcn",
     "pages/mine/myVisits/myVisits",
-    "pages/mine/changeInfo/changeInfo"
+    "pages/mine/changeInfo/changeInfo",
+    "pages/ticket/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",

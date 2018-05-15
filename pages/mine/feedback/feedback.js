@@ -100,8 +100,6 @@ Page({
     }
   },
   submitFeedBack(){
-    console.log(this.data.content)
-    console.log(this.data.phone)
     if(this.data.content !=='' && this.data.phone !== ''){
       var query = {}
       query.text = this.data.content

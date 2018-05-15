@@ -108,7 +108,6 @@ Page({
           for (var i = 0; i < res.data.data.list.length;i++){
             if (!reg1.test(res.data.data.list[i].title) && !reg2.test(res.data.data.list[i].title)) {
               WxParse.wxParse('article', 'html', res.data.data.list[i].article, this, 5)
-              // console.log(this.data.articleArr)
               arr.push(this.data.article)
               this.data.myVisits.push(res.data.data.list[i])
             }

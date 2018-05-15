@@ -62,15 +62,12 @@ Page({
         })
       },
       complete: (res)=>{
-        console.log(res)
         if (res.data && res.data.phone) {
-          console.log('存储')
           this.getUserInfo()
           this.setData({
             noPhone: false
           })
         } else {
-          console.log('跳转')
           wx.navigateTo({
             url: '/pages/mine/safeCenter/safeCenter',
           })

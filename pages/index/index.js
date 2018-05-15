@@ -39,7 +39,11 @@ Page({
     
   },
   getDataError() {
-    alert("服务器发生错误！")
+    wx.showToast({
+      title: '服务端发生错误！',
+      icon: 'none',
+      duration: 2000
+    })
   },
   ajaxComplete() {
     wx.hideLoading()

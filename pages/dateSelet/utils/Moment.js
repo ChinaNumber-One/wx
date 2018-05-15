@@ -85,7 +85,6 @@ Moment.prototype.add = function(num,optionType){
     }
     this.date = date;
     return this;
-    console.log(data)
 }
 
 Moment.prototype.before = function(date){

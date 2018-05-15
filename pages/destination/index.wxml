@@ -36,10 +36,10 @@
       <image src='../../img/food.png' class='functionImg'></image>
       <text class='functionTitle'>美食</text>
     </view>
-    <view class='functionItem'>
+    <navigator url="/pages/ticket/index" class='functionItem'>
       <image src='../../img/ticket.png' class='functionImg'></image>
       <text class='functionTitle'>车票</text>
-    </view>
+    </navigator>
     <navigator url="/pages/destination/viewsList/viewsList" class='functionItem'>
       <image src='../../img/sight.png' class='functionImg'></image>
       <text class='functionTitle'>景点</text>

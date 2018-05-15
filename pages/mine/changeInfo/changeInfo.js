@@ -129,7 +129,6 @@ Page({
     this.setData({
       sex: e.detail.value
     })
-    console.log(e.detail.value)
   },
   saveName(e){
     var reg = /^[\w\u4e00-\u9fa5]{3,8}$/;
@@ -147,7 +146,6 @@ Page({
     })
   },
   saveDesc(e){
-    console.log(e)
     this.setData({
       desc: e.detail.value
     })
@@ -184,7 +182,6 @@ Page({
     })
     var regHttp = /^https+/
     if (regHttp.test(this.data.userImg)){
-      console.log('http')
       wx.downloadFile({
         url: this.data.userImg, 
         complete:  (res)=> {
@@ -192,13 +189,11 @@ Page({
             this.setData({
               userImg: res.tempFilePath
             })
-            console.log(this.data.userImg)
             this.uploadImg()
           }
         }
       })
     }else {
-      console.log(this.data.userImg)
       this.uploadImg()
     }
   },

@@ -138,7 +138,11 @@ Page({
   
   },
   getDataError() {
-    alert("服务器发生错误！")
+    wx.showToast({
+      title: '服务端发生错误！',
+      icon: 'none',
+      duration: 2000
+    })
   },
   showTypes(e){
     var index = e.currentTarget.dataset.index
@@ -149,9 +153,7 @@ Page({
     })
   },
   deleteContent(e){
-    console.log(1)
     var index = e.currentTarget.dataset.index;
-    console.log(index)
     this.data.toolBar.splice(index,1)
     this.setData({
       toolBar:this.data.toolBar
@@ -191,7 +193,6 @@ Page({
     this.setData({
       toolBar: this.data.toolBar
     })
-    console.log(this.data.toolBar)
   },
   submitVisit(){
         
@@ -203,14 +204,12 @@ Page({
           icon: 'none',
           duration: 2000,
         })
-        console.log('http')
       } else if (this.data.title === '') {
         wx.showToast({
           title: '请填写标题',
           icon: 'none',
           duration: 2000,
         })
-        console.log('kong')
       } else {
         if(this.data.headImg !== ''){
           if (this.data.toolBar[this.data.i].types === 'image' && this.data.toolBar[this.data.i].images !== '') {
@@ -226,9 +225,7 @@ Page({
               this.data.i++
               this.submitVisit();
             } else {
-              console.log(this.data.i + '----' + this.data.toolBar.length)
               if (this.data.uploadImgs === this.data.imgs) {
-                console.log(this.data.imgUrls)
                 this.publishVisit()
               }
             }
@@ -241,7 +238,6 @@ Page({
           })
         }
       }
-      console.log(this.data.toolBar[this.data.i])
       
   },
   startUpload() {
@@ -297,9 +293,7 @@ Page({
                         this.data.i++
                         this.submitVisit();
                       } else {
-                        console.log(this.data.i + '----' + this.data.toolBar.length)
                         if (this.data.uploadImgs === this.data.imgs) {
-                          console.log(this.data.imgUrls)
                           this.publishVisit()
                         }
                       }
@@ -337,7 +331,6 @@ Page({
         this.data.str += '<p style="text-indent:2rem">' + this.data.toolBar[i].text + '</p><br />'
       }
     }
-    console.log(this.data.str)
     wx.uploadFile({
       url: 'https://www.wordming.cn/common/publish.html',
       filePath: this.data.headImg,

@@ -67,10 +67,10 @@ Page({
     wx.saveImageToPhotosAlbum({
       filePath:'/img/gzh.jpg',
       success(res) {
-        console.log(1)
+        // console.log(1)
       },
       fail:(res)=>{
-        console.log(res)
+        // console.log(res)
       }
     })
   }

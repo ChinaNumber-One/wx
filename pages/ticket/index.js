@@ -1,27 +1,18 @@
-// pages/destination/viewDetail/viewDetail.js
-const app = getApp()
+// pages/ticket/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    viewDetail:null,
-    deviceHeight:null,
-    defaultImg: '/img/noImg.png',
+  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.getSystemInfo({
-      success: function (res) {
-        this.setData({
-          deviceHeight: res.windowHeight
-        })
-      }.bind(this),
-    })
+  
   },
 
   /**
@@ -35,10 +26,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-      imgCount: app.currentView.picList.length,
-      viewDetail: app.currentView
-    })
+  
   },
 
   /**
