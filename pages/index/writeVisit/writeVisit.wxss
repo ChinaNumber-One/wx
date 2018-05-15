@@ -1,0 +1,72 @@
+/* pages/index/writeVisit/writeVisit.wxss */
+.imgBox{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.img {
+  width: 30%;
+  height: 220rpx;
+  display: inline-block;
+  text-align: center;
+  margin: 5px 1.6%;
+}
+.imgBig{
+  
+}
+
+.title{
+  height: 100rpx;
+  display: inline-block;
+  line-height: 100rpx;
+  font-size: 60rpx;
+  padding-left: 20px;
+}
+
+.iconGroup{
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #eee;
+  border-top: 1px solid #eee;
+}
+.iconfont {
+  margin: 0 10px;
+}
+.editorBox{
+  width: 100%;
+  position: relative;
+}
+.inputBox{
+  min-height: 300rpx;
+  width:100%;
+  padding: 5px 10px;
+  box-sizing: border-box;
+}
+.text{
+  width: 100%;
+  line-height: 20px;
+  font-size: 16px;
+}
+
+.submitBox {
+  z-index: 100;
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 0;
+}
+.submitBtn {
+  line-height: 50px;
+  text-align: center;
+  margin: 0 20%;
+  background: #ffbf1c;
+  font-size: 22px;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 10px;
+}

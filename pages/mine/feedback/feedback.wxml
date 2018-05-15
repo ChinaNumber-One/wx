@@ -1,0 +1,28 @@
+<!--pages/mine/feedback/feedback.wxml-->
+<view class='container'>
+  <view class='content'>
+    <textarea placeholder='请输入反馈内容，最多200字。' 
+              maxlength = '200' 
+              class='feedBackCon'
+              bindblur='checkContent'
+              />
+  </view>
+  <view class='contact'>
+    <view class='title'>留下您的联系方式:</view>
+    <view class='phoneBox flex'>
+      <text class='iconfont icon-shouji' style='font-size:32px;color:#ff7246;padding:10px'></text>
+      <input placeholder='请输入手机号(必填)' bindblur='checkPhone'></input>
+    </view>
+    <view class='phoneBox flex'>
+      <text class='iconfont icon-weixin'style='font-size:32px;color:#0ec873;padding:10px'></text>
+      <input placeholder='请输入微信号' bindblur='checkWeixin'></input>
+    </view>
+    <view class='phoneBox flex'>
+      <text class='iconfont icon-QQ'style='font-size:32px;color:#37ddf6;padding:10px'></text>
+      <input placeholder='请输入QQ号' bindblur='checkQQ'></input>
+    </view>
+   </view>
+   <view class='submitBox'>
+      <view class='submitBtn' bindtap='submitFeedBack'>提交</view>
+   </view>  
+</view>

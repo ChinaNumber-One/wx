@@ -1,0 +1,30 @@
+<view class='container'>
+  <view class='inputBox'>
+    <input 
+      type='string'
+      placeholder='{{placeholder}}'
+      class='input'
+      bindfocus="onFocus"
+      bindblur='onBlur'
+      bindconfirm="onBlur"
+      bindinput='onInput'
+    ></input>
+    <icon type='search' size="16" color='#999' class='searchIcon' wx:if='{{showSearchIcon}}'></icon>
+    <view class='cansole' bindtap='goBack'>取消</view>
+  </view>
+  <view class='history'>
+    <view class='historyTitle' wx:if="{{history.length>0}}">历史记录<text class='delStorage' bindtap='delStorage'>清空</text></view>
+    <view class='historyList'>
+      <view class='historyItem' wx:for="{{history}}" wx:key='{{index}}' bindtap='searchHisory' data-key='{{item}}'>{{item}}</view>
+    </view>
+  </view>
+  <view class='resultBox'>
+    <scroll-view scroll-y="true" class='scrollView' > 
+      <view class='resultItem' wx:for="{{dataInfo}}" wx:key="{{index}}" data-id='{{item.id}}' bindtap='goDetail' data-type='{{item.type}}' wx:if="{{item.title}}">
+        <view class='type strategy' wx:if="{{item.type === '攻略'}}">{{item.type}}</view>
+        <view class='type visit' wx:if="{{item.type === '游记'}}">{{item.type}}</view>
+        <view class='title'>{{item.title}}</view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

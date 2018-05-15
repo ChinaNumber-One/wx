@@ -1,0 +1,110 @@
+/* pages/search/search.wxss */
+/* page{
+  position: absolute;
+  top:0;
+  bottom:0;
+  left: 0;
+  right: 0;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+} */
+.inputBox {
+  display: flex;
+  align-items: center; 
+  height: 30px;
+  position: fixed;
+  width: 100%;
+  background: #fff;
+  padding: 10px 0;
+  z-index: 2;
+}
+.input{
+  flex: 1;
+  background: #eee;
+  height:60rpx;
+  margin-left: 20px;
+  border-radius: 5px;
+  padding-left: 5px;
+}
+.input-placeholder {
+  text-indent: 1.5rem;
+}
+.cansole {
+  width: 16%;
+  font-size: 16px;
+  text-align: center;
+  line-height: 60rpx;
+}
+.searchIcon {
+  position: absolute;
+  left: 30px;
+  color: #000;
+  z-index: 2;
+}
+.history {
+  padding: 0 20px;
+  margin-top: 130rpx;
+  position: relative;
+  /* height: 200px;  */
+}
+.historyTitle{
+  font-size: 18px;
+  font-weight: 900;
+  height: 25px;
+}
+.historyList{
+  display: flex;
+  flex-wrap: wrap;
+}
+.historyItem {
+  margin: 10px 10px 0 0;
+  background: #f5f5f5;
+  padding: 5px 10px;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+   /* box-sizing: border-box;  */
+   /* height: 20px;  */
+}
+.delStorage{
+  float: right;
+  font-size: 14px;
+  color: #78c4da;
+}
+.resultBox {
+  height: 100%;
+}
+.resultItem {
+  padding: 0 20px;
+  height: 36px;
+  display: flex;
+  margin-top: 10px;
+  align-items: center;
+  border-bottom: 1px solid #f1f1f1;
+}
+.scrollView {
+  height: 100%; 
+}
+.type{
+  width: 100rpx;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600px;
+  margin-right: 20px;
+}
+.visit {
+  color: #21944a;
+}
+.strategy {
+  color: #fe5a4b;
+}
+.title {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

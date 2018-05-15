@@ -1,0 +1,75 @@
+/* pages/dateSelect/dateSelect.wxss */
+page{
+  font-family: "Helvetica Neue", "Hiragino Sans GB", "Microsoft YaHei", "\9ED1\4F53", Arial, sans-serif;
+  color:#333;
+  font-size: 28rpx;
+  overflow-x: hidden; 
+  overflow-y: auto;
+}
+.layout-flex{
+    display:flex;
+}
+.layout-flex .row{
+    flex-direction: row;
+    
+}
+.layout-flex .column{
+    flex-direction: column;
+}
+.align-center{
+    align-items:center;
+    justify-content: center;
+}
+.days{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.date-day{
+    display: flex;
+    margin:5px; 
+    flex-direction: column;
+    text-align:center;
+    justify-content: center;
+    align-items: center;
+}
+.date-day.active{
+    background: #FF9C01!important;
+    color:#FFF;
+    border-radius: 50%;
+}
+.date-day.between{
+    background: #f4d581;
+    border-radius: 50%;
+}
+.date-day.unavailable{
+    color:#aaa;
+}
+
+.date-week{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin:5px;
+}
+.week{
+    color:#FF9C01;
+}
+.submitBox {
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  background-color: #fff;
+  bottom: 0;
+}
+.submit{
+  width: 70%;
+  background-color: #ff9c01;
+  color: #fff;
+  font-size: 20px;
+  line-height: 40px;
+  text-align: center;
+  margin: 0 15%;
+  border-radius: 5px;
+  margin-top: 10px;
+}

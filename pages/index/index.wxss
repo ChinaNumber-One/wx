@@ -1,0 +1,166 @@
+.searchBox{
+  display: flex;
+  padding: 0 15px;
+  justify-content:space-around;
+  align-items: center;
+  height: 65px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #fff;
+  z-index: 2;
+}
+.logoImg{
+  height: 32px;
+  width: 80px;
+}
+.searchInput{
+  display: flex;
+  align-items: center;
+  height: 32px;
+  line-height: 32px;
+  flex: 1;
+  font-size: 14px;
+  color: #999;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  margin: 0 10px;
+}
+.searchIcon{
+  margin-left: 10px;
+  margin-right: 5px;
+  height: 16px;
+}
+.messageIcom{
+  height: 26px;
+  width: 26px;
+}
+/*功能 box  */
+.functionBox{
+  height: 180px;
+  margin-top: 65px;
+}
+.functionItem{
+  width: 33%;
+  height: 50%;
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 14px;
+}
+.functionImg{
+  height: 50px;
+  width: 50px;
+  margin-bottom: 5px;
+}
+.scrollTitle{
+  height: 16px;
+  padding: 12px 0;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 16px;
+}
+.titleBorder{
+  height: 16px;
+  width: 5px;
+  background-color: #ffbf1c;
+  margin: 0 6px 0 10px;
+  float: left;
+}
+.titleText{
+  float: left;
+}
+.more{
+  float: right;
+  font-size: 12px;
+  font-weight: 400;
+  margin-right: 15px;
+  color: #333;
+}
+ .tripBox{
+  overflow: hidden;
+  height: 0;
+  padding-bottom: 250px;
+} 
+.tripItem{
+  display: inline-block;
+  position: relative;
+  height: 210px;
+  width: 250px;
+  margin: 0 5px;
+}
+.tripImg{
+  display: block;
+  height: 150px;
+  width: 100%;
+}
+.createDate{
+  position: absolute;
+  left: 15px;
+  top: 0;
+  background-color: #ffbf1c;
+  padding: 0 5px;
+  line-height: 24px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.tripTitle{
+  width: 100%;
+  line-height: 16px;
+  font-weight: 400;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 5px;
+  box-sizing: border-box;
+}
+.tirpUser{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.userImg{
+  height: 26px;
+  width: 26px;
+  border-radius: 50%;
+}
+.articleView{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.userName{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #999;
+}
+.nameTxt{
+  max-width: 60px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #000;
+}
+.userPlace{
+  max-width: 40;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #ffbf1c;
+}
+.articleView{
+  width: 110px;
+  color: #999;
+}
+.num{
+  color: #000;
+  font-weight: 500;
+  max-width: 26px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

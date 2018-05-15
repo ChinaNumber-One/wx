@@ -1,0 +1,270 @@
+/* pages/destination/index.wxss */
+.headerInfo{
+  height: 200px;
+  width: 100%;
+  position: relative;
+}
+/* search */
+.searchBox{
+  display: flex;
+  padding: 0 15px; 
+  justify-content:space-around;
+  align-items: center;
+  height: 65px;
+  width: 100%;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+}
+.searchInput{
+  display: flex;
+  align-items: center;
+  height: 32px;
+  line-height: 32px;
+  flex: 1;
+  font-size: 14px;
+  color: #fff;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  margin: 0 10px;
+  background: rgba(0, 0, 0, .2);
+}
+.searchIcon{
+  margin-left: 10px;
+  margin-right: 5px;
+  height: 16px;
+}
+.mapIcon{
+  height: 26px;
+  width: 26px;
+}
+
+
+.headerImg{
+  height: 100%;
+  width: 100%;
+}
+.cityBox{
+  display: flex;
+  align-items: center;
+  min-width: 100px;
+  height: 50px;
+  background: rgba(0, 0, 0, .5);
+  border-radius: 10px;
+  position: absolute;
+  top: 80px;
+  left: 20px;
+}
+.cityIcom{
+  height: 22px;
+  width: 22px;
+  margin: 0 10px;
+}
+.cityName{
+  flex: 1;
+  font-weight: 900;
+  color: #fff;
+  font-size: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.iconDown {
+  font-size: 12px;
+  margin: 0 5px;
+}
+.weatherInfo{
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  color: #fff;
+}
+.temperature{
+  margin-right: 10px;
+}
+.weatherInfo{
+  display: flex;
+}
+
+
+/*功能 box  */
+.functionBox{
+  height: 180px;
+}
+.functionItem{
+  width: 33%;
+  height: 50%;
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 14px;
+}
+.functionImg{
+  height: 50px;
+  width: 50px;
+  margin-bottom: 5px;
+}
+
+.scrollTitle{
+  height: 16px;
+  padding: 12px 0;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 16px;
+}
+.titleBorder{
+  height: 16px;
+  width: 5px;
+  background-color: #ffbf1c;
+  margin: 0 6px 0 10px;
+  float: left;
+}
+.titleText{
+  float: left;
+}
+.more{
+  float: right;
+  font-size: 12px;
+  font-weight: 400;
+  margin-right: 15px;
+  color: #333;
+}
+.scrollView {
+  display: flex;
+  flex-wrap: wrap;
+  height: 160px;
+}
+.destItem{
+  display: inline-block;
+  padding: 0 5px;
+  width: 33%;
+  box-sizing: border-box;
+  position: relative;
+}
+.destImage{
+  width:100%;
+  height:80px;
+}
+.destPlace {
+  position: absolute;
+  width: 60;
+  line-height: 50px;
+  top: 20%;
+  bottom: 20%;
+  left: 20%;
+  right: 20%;
+  background: rgba(255, 255, 255, .5);
+  border-radius: 10px;
+  color: #000;
+  font-size: 18px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.swiper{
+  height: 200px;
+  width: 100%;
+  position: relative;
+}
+.slideImage {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+.swiperTxt{
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  right: 10%;
+  bottom: 10%;
+  background: rgba(68, 68, 68, .5);
+  border-radius: 20px;
+  color: #fff;
+}
+.swiperTitle{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.swiperUser {
+  display: flex;
+}
+.userImg {
+  height: 26px;
+  width: 26px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+.userName {
+  line-height: 26px;
+}
+.swiperBottom{
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  bottom: 10px;
+  width: 100%;
+  line-height: 26px;
+}
+.swiperPlace {
+  font-size: 24px;
+  font-weight: 900;
+  position: absolute;
+  bottom:60px;
+  width: 100%;
+  text-align: center;
+}
+.placeIcon {
+  font-size: 24px;
+}
+
+.strategyItem {
+  display: flex;
+  padding: 0 5px 5px 5px;
+}
+.strategyImg {
+  height: 100px;
+  width: 150px;
+  margin-right: 5px;
+}
+.strategyInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.strategyTitle {
+  font-weight: 900;
+  font-size: 16px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin-bottom:6px;
+}
+.strategyDesc {
+  font-size: 12px;
+  color: #666;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.strategyCount {
+  display: flex;
+  font-size: 12px;
+  color: #666; 
+}
+.collect, .browse {
+  display: flex;
+  margin: 0 10px;
+}

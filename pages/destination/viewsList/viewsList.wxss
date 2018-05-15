@@ -1,0 +1,101 @@
+.searchBox{
+  background: #f5f5f5;
+  border-radius: 5px;
+  height: 30px;
+  width: 80%;
+  margin: 0 10%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+.citySelect {
+  width: 20%;
+  padding: 0 5%;
+  text-align: center;
+  border-right: 2px solid #999;
+}
+.icon-triangle-bottom{
+  font-size: 10px!important;
+}
+.inputBox{
+  flex: 1;
+  text-align: center;
+  color: #999;
+}
+
+.viewList{
+  padding: 5px;
+}
+.viewItem{
+  display: flex;
+  margin-bottom: 5px;
+  height: 120px;
+  width: 100%;
+}
+.viewSmallImg{
+  height: 120px;
+  width:130px;
+}
+.viewDesc{
+  flex: 1;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.viewSummary{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  
+}
+.viewSummary{
+  text-indent: 24px;
+}
+.viewAddress{
+  font-size: 12px;
+  color: #999;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.viewName {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.icon-jingdian2{
+  font-size: 22px!important;
+}
+.viewTitle {
+  font-size: 22px;
+  font-weight: 900;
+  margin: 20px 0 20px 10px;
+}
+.pagesContent {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 0;
+}
+.pickerBtn {
+  padding: 0 5px;
+  margin: 0 5px;
+  text-align: center;
+  background: #f5f5f5;
+}
+.pagesContent {
+  height: 30px;
+}
+.pagesContent{
+  line-height: 30px;
+}

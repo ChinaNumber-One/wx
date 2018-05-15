@@ -1,0 +1,43 @@
+/* pages/mine/changeInfo/changeInfo.wxss */
+.container {
+  background: #f1f1f1;
+}
+.items{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  background: #fff;
+  margin-bottom: 10px;
+  line-height: 50px;
+}
+.userImg{
+  width: 64px;
+  height: 64px;
+}
+.warming{
+  color: red;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  margin-bottom: 10px;
+}
+.icon-bangzhu{
+  font-size: 12px;
+  font-weight: 600;
+  color: #999;
+  margin-left: 5px;
+}
+.nameInput {
+  border-bottom: 1px solid #f1f1f1
+}
+.userNickBox {
+  margin-bottom: 0;
+}
+.desc{
+  height: 50px;
+  text-align: right;
+  line-height: 18px;
+}

@@ -1,0 +1,51 @@
+<view class='container'>
+  <view class='inputBox'>
+    <input 
+      type='string'
+      placeholder='{{placeholder}}'
+      class='input'
+      bindfocus="onFocus"
+      bindblur='onBlur'
+      bindconfirm="onConfirm"
+      bindinput='onInput'
+    ></input>
+    <icon type='search' size="16" color='#999' class='searchIcon' wx:if='{{showSearchIcon}}'></icon>
+    <view class='cansole' bindtap='goBack'>取消</view>
+  </view>
+
+  <scroll-view 
+    scroll-y="true" 
+    style='height:{{deviceHeight-80}}px'
+    scroll-top="{{scrollTop}}"
+    class='scrollView'
+    wx:if="{{!noResult}}"
+  >
+    <view class='viewList'>
+      <view class='viewItem' wx:for="{{contentList}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap='goDetail'>
+        <image class='viewSmallImg' src='{{item.picList[0].picUrlSmall||defaultImg}}'></image>
+        <view class='viewDesc'>
+          <view class='viewName'>
+            <text class='iconfont icon-jingdian2' style='color:#fa791a'></text>
+            {{item.name}}
+          </view>
+          <view class='viewSummary'>{{item.summary}}</view>
+          <view class='viewAddress' wx:if="{{item.address}}">
+            <text class='iconfont icon-dizhi1' style='color:red'></text>
+            {{item.address}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class='noData' wx:else="{{noResult}}">没有信息～</view>
+  <view class='pagesContent' wx:if="{{allPages>1}}">
+    <view class='lastPage' bindtap='toLastPage'>上一页</view>
+    <view class='currentPage'>{{page}}/{{allPages}}</view>
+    <view class='nextPage' bindtap='toNextPage'>下一页</view>
+    <picker bindchange="bindPickerChange" value="{{page-1}}" range="{{pagesArr}}">
+      <view class="picker">
+        跳转到：第<text class='pickerBtn'>{{pagesArr[page-1]}}</text>页
+      </view>
+    </picker>
+  </view>
+</view>

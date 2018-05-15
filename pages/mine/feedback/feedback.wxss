@@ -1,0 +1,43 @@
+/* pages/mine/feedback/feedback.wxss */
+.content, .contact{
+  padding: 20px 20px 0 20px;
+}
+.flex{
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.feedBackCon{
+  width: 100%;
+  height: 380rpx;
+  border: 1px solid #999;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 10px;
+}
+.title {
+  margin-bottom: 20px;
+}
+.iconfont {
+  /* width: 44px; */
+}
+input {
+  flex: 1;
+  padding: 0 0 5px 5px;
+  border-bottom: 1px solid #999;
+  margin-right: 30px;
+}
+.submitBox {
+  width: 100%;
+  padding: 10px 0;
+}
+.submitBtn {
+  line-height: 50px;
+  text-align: center;
+  margin: 0 20%;
+  background: #ffbf1c;
+  font-size: 22px;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 10px;
+}

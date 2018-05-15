@@ -1,0 +1,126 @@
+<!--pages/destination/index.wxml-->
+<view class='container'>
+  <view class='headerInfo'>
+    <view class='searchBox'>
+      <navigator url="/pages/search/search" class='searchInput'>
+        <icon type='search' size="16" color='#fff' class='searchIcon'></icon>
+        <text>搜索攻略/游记</text>
+      </navigator>
+      <image src='../../img/mapicon1.png' class='mapIcon'></image>
+    </view>
+    <image class='headerImg' src='{{dataInfo.headerInfo.viewImg[0]}}'></image>
+    <view class='cityBox' bindtap='changeCity'>
+      <image class='cityIcom' src='../../img/cityicon.png'></image>
+      <view class='cityName'>{{city}}<text class='iconfont icon-icon-arrow-bottom2 iconDown'></text></view>
+    </view>
+    <view class='weatherInfo'>
+      <view class='temperature'>{{dataInfo.headerInfo.temperature}}°</view>
+      <view class='weather'>{{dataInfo.headerInfo.weather}}</view>
+    </view>
+  </view>
+
+  <view class='functionBox'>
+    <navigator url="/pages/strategyList/strategyList" class='functionItem'>
+      <image src='../../img/strategy.png' class='functionImg'></image>
+      <text class='functionTitle'>攻略</text>
+    </navigator>
+    <navigator url="/pages/hotel/index" open-type="switchTab" class='functionItem'>
+      <image src='../../img/hotel.png' class='functionImg'></image>
+      <text class='functionTitle'>酒店</text>
+    </navigator>
+    <navigator url="/pages/visitList/visitList" class='functionItem'>
+      <image src='../../img/visit.png' class='functionImg'></image>
+      <text class='functionTitle'>游记</text>
+    </navigator>
+    <view class='functionItem'>
+      <image src='../../img/food.png' class='functionImg'></image>
+      <text class='functionTitle'>美食</text>
+    </view>
+    <view class='functionItem'>
+      <image src='../../img/ticket.png' class='functionImg'></image>
+      <text class='functionTitle'>车票</text>
+    </view>
+    <navigator url="/pages/destination/viewsList/viewsList" class='functionItem'>
+      <image src='../../img/sight.png' class='functionImg'></image>
+      <text class='functionTitle'>景点</text>
+    </navigator>
+  </view>
+  <!--热门目的地  -->
+  <view class='hotDestination'>
+    <view class='scrollTitle'>
+      <view class='titleBorder'></view>
+      <text class='titleText'>热门目的地</text>
+    </view>
+    <scroll-view scroll-y="true" class='scrollView' > 
+      <view class='destItem' wx:for="{{dataInfo.views}}" wx:key="item.id" bindtap='reloadPage' data-city="{{item.city}}">
+        <image class='destImage' src='{{item.imgUrl}}' lazy-load='true' ></image>
+        <view class='destPlace'>{{item.city}}</view>
+      </view>
+    </scroll-view>
+  </view>
+  <!--游记  -->
+  <view class='swiperBox'>
+    <view class='scrollTitle'>
+      <view class='titleBorder'></view>
+      <text class='titleText'>热门游记</text>
+      <navigator url="/pages/visitList/visitList" class='more'>更多></navigator>
+    </view>
+    <swiper indicator-dots="true"
+            autoplay="true" 
+            interval="5000" 
+            duration="500"
+            class='swiper'
+            circular='true'>
+      
+      <block wx:for="{{dataInfo.travels}}" wx:key="{{item.id}}">
+        <swiper-item data-id='{{item.id}}'bindtap='goVisitDetail'>
+          <image src="{{item.imgUrl}}" class="slideImage" lazy-load='true' />
+          <view class='swiperTxt'>
+            <view class='swiperTitle'>{{item.title}}</view>
+            <view class='swiperBottom'>
+              <view class='swiperData'>{{item.createdDate}}</view>
+              <view class='swiperUser'>
+                <image class='userImg' src='{{item.userImg}}' lazy-load='true' ></image>
+                <view class='userName'>{{item.nickname}}</view>
+              </view>
+            </view>
+            <view class='swiperPlace'>
+              {{item.place}}
+              <text class='iconfont icon-dingwei placeIcon'></text>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!--攻略  -->
+  <view class='strategyBox'>
+    <view class='scrollTitle'>
+      <view class='titleBorder'></view>
+      <text class='titleText'>推荐攻略</text>
+      <navigator url="/pages/strategyList/strategyList" class='more'>更多></navigator>
+    </view>
+    <view class='strategyList'>
+      <view class='strategyItem' 
+            wx:for="{{dataInfo.strategy}}" 
+            data-id='{{item.id}}'
+            bindtap='goStrategyDetail'
+            wx:key="{{item.id}}">
+        
+        <view class='strategyInfo'>
+          <view class='strategyTitle'>{{item.title}}</view>
+          <view class='strategyDesc'>{{item.summary}}</view>
+          <view class='strategyCount'>
+            <view class='browse'>
+              <view  class='iconfont icon-browse'></view>{{item.viewCount}}
+            </view>
+            <view class='collect'>
+               <view  class='iconfont icon-boshiweb_weishoucang'></view>{{item.collectCount}}
+            </view>
+          </view>
+        </view>
+        <image class='strategyImg' src='{{item.imgUrl}}' lazy-load='true' ></image>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,12 @@
+<import src="../../../wxParse/wxParse.wxml" />
+<view class='container'>
+  <image src='/img/myVisitBg.png' style='height:360rpx;width:100%;'></image>
+  <view wx:for="{{myVisits}}" wx:key="{{index}}" class='visitItems'>
+    <view class='title'>{{item.title}}</view>
+    <view class="wxParse">
+      <template is="wxParse" data="{{wxParseData:articleArr[index].nodes}}" />
+    </view>
+    <view class='createDate'>发表于：{{item.createdDate}}</view>
+  </view>
+</view>
+

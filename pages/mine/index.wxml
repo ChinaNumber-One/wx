@@ -1,0 +1,57 @@
+<!--index.wxml-->
+<view class="container" style='height:{{height}}px;background-color:#f1f1f1'>
+  <view class="userinfo" wx:if="{{isLogin}}">
+    <block>
+      <navigator url="/pages/mine/changeInfo/changeInfo" class='userImgBox'>
+        <image class="userinfo-avatar" src='{{userImg}}'></image>
+        <!-- <open-data wx:eles type="userAvatarUrl" class="userinfo-avatar"></open-data> -->
+         <view class='editor'>点击编辑</view> 
+      </navigator>
+      <view class='userNickName' >{{nickName}}</view>
+      <!-- <open-data type="userNickName" class="userinfo-nickname" wx:else></open-data> -->
+      <view class='userId'>即刻号：{{userId}}</view>
+    </block>
+  </view>
+ <button wx:if="{{canIUse&&!isLogin}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button> 
+<!-- <view wx:if="{{!canIUse}}">请升级微信版本</view> -->
+  <navigator url="/pages/mine/myVisits/myVisits" class='travels'>
+    <image class='settingIcon' src='/img/travels.png' style='width:26px;height:26px'></image> 
+    <text>我的游记</text>
+  </navigator>
+
+  <view class='selection'>
+    <image class='settingIcon' src='/img/selection.png' style='width:26px;height:26px'></image> 
+    <text>我的收藏</text>
+  </view>
+
+  <navigator url="/pages/mine/safeCenter/safeCenter" class='safe'>
+    <text class='iconfont icon-anquan' style='font-size:26px;color:#49c9f9'></text>
+    <text>安全中心</text>
+    <text class='warning' style='margin:10px;color:#f00' wx:if="{{noPhone}}">!!请验证手机号，享全部功能!!</text>
+  </navigator>
+
+  <navigator url="/pages/mine/grade/grade"  class='grade'>
+    <text class='iconfont icon-iconquanshangdafen01' style='font-size:26px;color:#fb6450'></text>
+    <text>给我们打分</text>
+  </navigator>
+
+  <view class='contact' bindtap='callMe'>
+    <text class='iconfont icon-lianxiwomen' style='font-size:26px;color:#3dcd7d'></text>
+    <text>联系我们</text>
+  </view>
+
+  <navigator url="/pages/mine/vipcn/vipcn" class='vipcn'>
+    <text class='iconfont icon-guanzhugongzhonghao' style='font-size:26px;color:#da73b2'></text>
+    <text>关注公众号</text>
+  </navigator>
+
+  <navigator url="/pages/mine/feedback/feedback" class='feedback'>
+    <text class='iconfont icon-fankui' style='font-size:26px;color:#9ecc30'></text>
+    <text>反馈</text>
+  </navigator>
+
+  <view class='setting'>
+    <image class='settingIcon' src='/img/setting.png' style='width:26px;height:26px'></image> 
+    <text>设置</text>
+  </view>
+</view>

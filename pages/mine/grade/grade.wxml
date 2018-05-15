@@ -1,0 +1,15 @@
+<view class='container'>
+  <view class='describe'>{{describe}}</view>
+  <view class='starBox'>
+    <image wx:for="{{starImgs}}" 
+           wx:key="{{index}}" 
+           src='{{item}}'
+           data-index="{{index}}"
+           class='start'
+           bindtap='clickStart'></image>
+    <text class='level'>{{level}}</text>
+  </view>
+  <view class='submitBox' wx:if="{{showBtn}}">
+    <view class='submitBtn' bindtap='submit' style='background:{{btnColor}}'>{{btnText}}</view>
+  </view>  
+</view> 

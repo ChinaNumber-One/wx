@@ -1,0 +1,80 @@
+/* pages/mine/safeCenter/safeCenter.wxss */
+.container {
+  padding: 30px 20px;
+}
+.areaNum {
+  color: #ffbf1c;
+  padding-right: 20px;
+  width: 40px;
+}
+.phoneInput {
+  flex: 1;
+}
+.inputBox {
+  line-height: 40px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+}
+.captchaBox {
+  margin-top: 8px;
+  border-bottom: 1px solid #eee;
+}
+.captcha {
+  height: 40px;
+  display: flex;
+  /* align-items: center;   */
+  justify-content: space-between;
+}
+.codeBtn {
+  margin-right: 20px;
+  padding: 5px 20px;
+  border-radius: 5px;
+  line-height: 28px;
+  font-size: 12px;
+}
+.bindPhoneBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bindPhoneBtn {
+  padding: 10px 80px;
+  background: #ffbf1c;
+  color: #fff;
+  text-align: center;
+  margin-top: 50px;
+  border-radius: 5px;
+}
+.loginInit{
+  text-decoration: underline;
+  color: #ffbf1c;
+  font-size: 10px;
+  margin-top: 10px;
+  text-align: center;
+}
+.hasPhoneImg{
+  height: 400rpx;
+  width: 340rpx;
+  margin-top: 30px;
+  color: #39a6f2
+}
+.hasPhone{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+.attention {
+  margin: 20px auto;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 900;
+  color: #2ed718;
+}
+.phone{
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+}

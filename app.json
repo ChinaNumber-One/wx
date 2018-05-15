@@ -1,0 +1,68 @@
+{
+  "pages": [
+    "pages/destination/index",
+    "pages/index/index",
+    "pages/visitDetail/visitDetail",
+    "pages/dateSelet/dateSelect",
+    "pages/switchcity/switchcity",
+    "pages/hotel/map/map",
+    "pages/visitList/visitList",
+    "pages/strategyList/strategyList",
+    "pages/search/search",
+    "pages/hotel/index",
+    "pages/hotel/hotelList/hotelList",
+    "pages/hotel/hotelDetail/hotelDetail",
+    "pages/hotel/hotelImages/hotelImages",
+    "pages/destination/searchView/searchView",
+    "pages/destination/viewsList/viewsList",
+    "pages/destination/viewDetail/viewDetail",
+    "pages/index/writeVisit/writeVisit",
+    "pages/mine/index",
+    "pages/mine/safeCenter/safeCenter",
+    "pages/mine/feedback/feedback",
+    "pages/mine/grade/grade",
+    "pages/mine/vipcn/vipcn",
+    "pages/mine/myVisits/myVisits",
+    "pages/mine/changeInfo/changeInfo"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#FFF",
+    "navigationBarTitleText": "即刻出发",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true,
+    "backgroundColor": "#f5f5f5"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/img/indexicon1.png",
+        "selectedIconPath": "/img/indexicon2.png"
+      },
+      {
+        "pagePath": "pages/destination/index",
+        "text": "目的地",
+        "iconPath": "/img/destinationicon1.png",
+        "selectedIconPath": "/img/destinationicon2.png"
+      },
+      {
+        "pagePath": "pages/hotel/index",
+        "text": "酒店",
+        "iconPath": "/img/hotelicon1.png",
+        "selectedIconPath": "/img/hotelicon2.png"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "text": "我的",
+        "iconPath": "/img/mineicon1.png",
+        "selectedIconPath": "/img/mineicon2.png"
+      }
+    ],
+    "color": "#666",
+    "selectedColor": "#000",
+    "backgroundColor": "#fff",
+    "position": "bottom"
+  }
+}

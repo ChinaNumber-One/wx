@@ -1,0 +1,40 @@
+<view class='container'>
+  <view class='strategyBanner'>
+    <swiper   
+            interval="5000" 
+            duration="500"
+            class='swiper'
+            circular='true'
+            autoplay="true"
+            >
+      <block wx:for="{{dataInfo.banner}}" wx:key="{{item.id}}">
+        <swiper-item data-id='{{item.id}}'bindtap='goDetail'>
+          <image class='itemImg' src='{{item.imgUrl}}' lazy-load='true' ></image>
+          <view class='itemTxt'>
+            <view class='itemName'>{{item.title}}</view>
+            <view class='dateAndTime'>
+              <view class='itemTime'>时间：<text class='data'>{{item.createdDate}}</text></view>
+              <view class='itemCity'>地点：<text class='data'>{{item.place}}</text></view>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class='strategyList'>
+    <view class='strategyItem' wx:for="{{dataInfo.list}}" wx:key="{{item.id}}" data-id='{{item.id}}'bindtap='goDetail'>
+      <view class='listItemCity'>{{item.place}}<text class='listItemTime'>{{item.createdDate}}</text></view>
+      <image class='listItemImg' src='{{item.imgUrl}}' lazy-load='true' ></image>
+      <view class='listItemTxt'> 
+        <view class='listItemTitle'>{{item.title}}</view>
+        <view class='listItemSummary'>{{item.summary}}</view>
+        <view class='userInfo'>
+          <image class='userImg' src='{{item.userImg}}'></image>
+          <view class='userName'>{{item.nickname}}</view>
+          <text class='iconfont icon-browse num'>{{item.viewCount}}</text>
+          <text class='iconfont icon-boshiweb_weishoucang num'>{{item.collectCount}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

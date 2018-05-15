@@ -1,0 +1,168 @@
+<view class='container'>
+  <!--searchBox  -->
+  <view class='searchBox'>
+    <image src='../../img/logo.png' class='logoImg'></image>
+    <navigator url="/pages/search/search" class='searchInput'>
+      <icon type='search' size="16" color='#999' class='searchIcon'></icon>
+      <text>搜索攻略/游记</text>
+    </navigator>
+    <!-- <image src='../../img/message.png' class='messageIcom'></image> -->
+  </view>
+  <!-- 功能   -->
+  <view class='functionBox'>
+    <navigator url="/pages/strategyList/strategyList" class='functionItem'>
+      <image src='../../img/strategy.png' class='functionImg'></image>
+      <text class='functionTitle'>攻略</text>
+    </navigator>
+    <navigator url="/pages/hotel/index" open-type="switchTab" class='functionItem'>
+      <image src='../../img/hotel.png' class='functionImg'></image>
+      <text class='functionTitle'>酒店</text>
+    </navigator>
+    <navigator url="/pages/visitList/visitList" class='functionItem'>
+      <image src='../../img/visit.png' class='functionImg'></image>
+      <text class='functionTitle'>游记</text>
+    </navigator>
+    <navigator url='/pages/destination/index' open-type="switchTab" class='functionItem'>
+      <image src='../../img/destination.png' class='functionImg'></image>
+      <text class='functionTitle'>目的地</text>
+    </navigator>
+    <view class='functionItem'>
+      <image src='../../img/ticket.png' class='functionImg'></image>
+      <text class='functionTitle'>车票</text>
+    </view>
+    <navigator url='/pages/index/writeVisit/writeVisit' class='functionItem'>
+      <image src='../../img/photo.png' class='functionImg'></image>
+      <text class='functionTitle'>写游记</text>
+    </navigator>
+  </view>
+  <!--横向滚动模块  -->
+  <!--精选  -->
+  <view class='tripBox'>
+    <view class='scrollTitle'>
+      <view class='titleBorder'></view>
+      <text class='titleText'>精选</text>
+      <navigator url="/pages/strategyList/strategyList" class='more'>更多></navigator>
+    </view>
+    <!--水平滚动-->
+    <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex" >
+      
+    <!--  display: inline-block-->
+      <view class='tripItem' wx:for="{{dataInfo.selection}}"  wx:key="item.id" data-id='{{item.id}}'bindtap='goDetail'>
+        <image src='{{item.imgUrl||defaultImg}}' lazy-load='true' class='tripImg' lazy-load='true' ></image>
+        <view class='createDate'>{{item.createdDate}}</view>
+        <view class='tripTitle'>{{item.title}}</view>
+        <view class='tirpUser'>
+          <view class='userName'>
+            <image class='userImg' src='{{item.userImg}}'></image>
+            <view class='nameTxt'>{{item.nickname}}</view>
+            <text>在</text>
+            <view class='userPlace'>{{item.place}}</view>
+          </view>
+          <view class='articleView'>
+            <text class='iconfont icon-browse'></text>
+            <text class='num'>{{item.browseNum}}</text>
+            <text class='iconfont icon-pinglun'></text>
+            <text class='num'>{{item.reply}}</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <!--情侣旅行  -->
+  <view class='tripBox'>
+    <view class='scrollTitle'>
+      <view class='titleBorder'></view>
+      <text class='titleText'>情侣旅行</text>
+      <navigator url="/pages/strategyList/strategyList" class='more'>更多></navigator>
+    </view>
+    <!--水平滚动-->
+    <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex" >
+      
+    <!--  display: inline-block-->
+      <view class='tripItem' wx:for="{{dataInfo.coupletrip}}" wx:key="item.id" data-id='{{item.id}}'bindtap='goDetail'>
+        <image src='{{item.imgUrl||defaultImg}}' lazy-load='true' class='tripImg' lazy-load='true' ></image>
+        <view class='createDate'>{{item.createdDate}}</view>
+        <view class='tripTitle'>{{item.title}}</view>
+        <view class='tirpUser'>
+          <view class='userName'>
+            <image class='userImg' src='{{item.userImg}}'></image>
+            <view class='nameTxt'>{{item.nickname}}</view>
+            <text>在</text>
+            <view class='userPlace'>{{item.place}}</view>
+          </view>
+          <view class='articleView'>
+            <text class='iconfont icon-browse'></text>
+            <text class='num'>{{item.browseNum}}</text>
+            <text class='iconfont icon-pinglun'></text>
+            <text class='num'>{{item.reply}}</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <!--亲子旅行  -->
+  <view class='tripBox'>
+    <view class='scrollTitle'>
+      <view class='titleBorder'></view>
+      <text class='titleText'>亲子旅行</text>
+      <navigator url="/pages/strategyList/strategyList" class='more'>更多></navigator>
+    </view>
+    <!--水平滚动-->
+    <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex" >
+      
+    <!--  display: inline-block-->
+      <view class='tripItem' wx:for="{{dataInfo.babyTrip}}" wx:key="item.id" data-id='{{item.id}}'bindtap='goDetail'>
+        <image src='{{item.imgUrl||defaultImg}}' lazy-load='true' class='tripImg' lazy-load='true' ></image>
+        <view class='createDate'>{{item.createdDate}}</view>
+        <view class='tripTitle'>{{item.title}}</view>
+        <view class='tirpUser'>
+          <view class='userName'>
+            <image class='userImg' src='{{item.userImg}}'></image>
+            <view class='nameTxt'>{{item.nickname}}</view>
+            <text>在</text>
+            <view class='userPlace'>{{item.place}}</view>
+          </view>
+          <view class='articleView'>
+            <text class='iconfont icon-browse'></text>
+            <text class='num'>{{item.browseNum}}</text>
+            <text class='iconfont icon-pinglun'></text>
+            <text class='num'>{{item.reply}}</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <!--影视旅行  -->
+  <view class='tripBox'>
+    <view class='scrollTitle'>
+      <view class='titleBorder'></view>
+      <text class='titleText'>影视旅行</text>
+      <navigator url="/pages/strategyList/strategyList" class='more'>更多></navigator>
+    </view>
+    <!--水平滚动-->
+    <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex" >
+      
+    <!--  display: inline-block-->
+      <view class='tripItem' wx:for="{{dataInfo.movietrip}}" wx:key="item.id" data-id='{{item.id}}'bindtap='goDetail'>
+        <image src='{{item.imgUrl||defaultImg}}' lazy-load='true' class='tripImg' lazy-load='true' ></image>
+        <view class='createDate'>{{item.createdDate}}</view>
+        <view class='tripTitle'>{{item.title}}</view>
+        <view class='tirpUser'>
+          
+          <view class='userName'>
+            <image class='userImg' src='{{item.userImg}}'></image>
+            <view class='nameTxt'>{{item.nickname}}</view>
+            <text>在</text>
+            <view class='userPlace'>{{item.place}}</view>
+          </view>
+          <view class='articleView'>
+            <text class='iconfont icon-browse'></text>
+            <text class='num'>{{item.browseNum}}</text>
+            <text class='iconfont icon-pinglun'></text>
+            <text class='num'>{{item.reply}}</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

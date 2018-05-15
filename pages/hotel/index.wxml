@@ -1,0 +1,50 @@
+<view class='container'>
+  <!-- <text class='listTitle'>当地酒店</text> -->
+  <view class='headInfo'>
+    <view class='headTitle'>酒店查询</view>
+    <view class='cityBox'>
+      <view class='cityName' bindtap='changeCity'>{{city}}</view>
+      <view class='getPosi' bindtap='getLocation'>
+        <view class='posiIcon iconfont icon-msnui-foresight'></view>
+        <text class='posiTxt'>我的位置</text>
+      </view>
+    </view>
+    <view class='timeBox' bindtap='changeDay'>
+      <view class='startTime'>
+        <text class='timeTxt'>入住</text>
+        <view class='timeDate'>{{showStartTime}}</view>
+      </view>
+      <view class='endTime'>
+        <text class='timeTxt'>离店</text>
+        <view class='timeDate'>{{showEndTime}}</view>
+      </view>
+      <view class='totalDays'>
+        <text class='timeTxt'>天数</text>
+        <view class='timeDate'>{{days}}</view>
+      </view>
+    </view>
+    <view class='toolBar'>
+      <view class='mapIcon iconfont icon-ditu' bindtap='openMap'>  地图</view>
+      <view class="searchBtn">查找酒店</view>
+    </view>
+  </view>
+  <view class='hotelList'>
+    <swiper 
+            autoplay="true" 
+            interval="5000" 
+            duration="500"
+            class='swiper'
+            circular='true'
+            >
+      <block wx:for="{{hotelList}}" wx:key="{{item.hotalId}}">
+        <swiper-item  data-hotelID="{{item.hotalId}}" bindtap="goHotelDetail">
+          <image class='itemImg' src='{{item.imgUrl}}' lazy-load='true' ></image>
+          <view class='itemTxt'>
+            <view class='itemName' data-id='{{item.hotalId}}'>{{item.hotalName}}</view>
+            <view class='iconfont icon-dingwei1'>{{item.proName}}{{item.cityName}}</view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</view>

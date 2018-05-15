@@ -1,0 +1,115 @@
+/* pages/visitDetail/visitDetail.wxss */
+.headImgBox {
+  width: 100%;
+  height: 400rpx;
+}
+.headImg{
+  width: 100%;
+  height: 100%;
+}
+.articleInfo {
+  padding: 0 40rpx;
+  margin-bottom: 40rpx;
+}
+.articleTitle {
+  font-size: 22px;
+  font-weight: 900;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin: 16rpx 0;
+}
+.articleDate{
+  font-size: 12px;
+  color: #666;
+}
+.userAndPlace {
+  display: flex;
+  align-items: center;
+  margin-top: 40rpx;
+}
+.userInfo {
+   /* background: #ffcb1f;  */
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+.userImg {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.userMes {
+  flex:1;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.userName {
+  width: 272rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 20px;
+}
+.replyNum {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  width: 272rpx;
+}
+.num {
+  display: inline-block;
+  font-size: 12px;
+  max-width: 200rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.place{
+  width: 40%;
+  font-size: 30px;
+  font-weight: 900;
+  text-align: center;
+  margin-right: 20rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.toTop {
+  position: fixed;
+  right: 10rpx;
+  bottom: 30px;
+  /* background: #fff; */
+   /* border-radius: 10%;   */
+}
+.toTopIcon{
+  font-size: 60rpx;
+  color: #54a5f7;
+  padding: 20rpx;
+  background-color: rgba(255, 255, 255, .7); 
+  border-radius: 50%;
+  
+}
+.strategy {
+  font-size: 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  width: 60%;
+}
+.strategyNum {
+  display: inline-block;
+  max-width: 300rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.collectIcon {
+  font-size: 20px;
+  color: #ffbc1f;
+}

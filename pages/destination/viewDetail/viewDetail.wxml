@@ -1,0 +1,33 @@
+<!--pages/destination/viewDetail/viewDetail.wxml-->
+<view class='container'>
+  <swiper 
+    duration="500"
+    class='swiper'
+    wx:if="{{viewDetail.picList}}"
+  >
+    <block wx:for="{{viewDetail.picList}}" wx:key="{{index}}">
+      <swiper-item class="imgBox">
+        <image class='roomImg' src='{{item.picUrl||defaultImg}}' data-index="{{index}}"></image>
+        <view class='imgNum'>{{index+1}}/{{imgCount}}</view>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='viewInfo' style='min-height:{{deviceHeight-155}}px'>
+    <view class='viewName'>{{viewDetail.name}}</view>
+    <view class='viewSummary'>{{viewDetail.summary}}</view>
+    <view class='viewAddress'><text class='iconfont icon-dingwei' style='color:#2a93ff;'></text>{{viewDetail.address}}</view>
+    <view><text class='iconfont icon-guizeshuoming' style='color:#2a93ff;'></text> 使用规则</view>
+    <view class='viewAttention'>
+      {{viewDetail.attention}}
+    </view>
+    <view><text class='iconfont icon-guize' style='color:#2a93ff;'></text> 优待政策</view>
+    <view class='viewCoupon'> 
+      {{viewDetail.coupon}}
+    </view>
+    <view class='viewOpenTime'>
+      <text class='iconfont icon-kaifangshijian' style='color:#2a93ff;'></text>
+      开放时间：{{viewDetail.opentime}}
+    </view>
+    <view class='viewContent'>{{viewDetail.content}}</view>
+  </view> 
+</view>

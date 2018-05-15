@@ -1,0 +1,27 @@
+/* pages/mine/vipcn/vipcn.wxss */
+.imageBox{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+.image {
+  height: 400rpx;
+  width: 400rpx;
+  margin: 0 auto;
+}
+.gzhbg {
+  height: 100px;
+  width: 100%;
+}
+.title{
+  margin-top: 30px;
+  font-size: 12px;
+  font-weight: 600px;
+  /* text-align: center; */
+  text-indent: 24px;
+  color: #39a6f2;
+  padding: 0 30px;
+}

@@ -1,0 +1,63 @@
+<!--  -->
+<view class='container' style='padding-bottom:70px;'>
+  <image src='{{headImg}}' wx:if="{{headImg !== ''}}" style='width:100%;height:340rpx;'  bindtap='addHeadImg'></image>
+  <view style='width:100%;height:340rpx;display:flex;justify-content: center;align-items: center;  flex-direction: column;' wx:else bindtap='addHeadImg'>
+    <image src='/img/addImg.png' style='height:160rpx;width:200rpx;'></image>  
+    <text style='line-height:24px;font-weight:600px;font-size:12px;text-align:center;color:#999'>点击上传图片(必传)</text>
+  </view>
+  <input class='title' bindblur='saveTitle' placeholder='请输入标题(必填)'></input>
+  <view class='toolBar' 
+        wx:for="{{toolBar}}" 
+        wx:key="{{index}}"   
+        >
+    <view class='iconGroup'>
+      <text class='iconfont icon-jiahao' bindtap='showTypes' data-index="{{index}}" wx:if="{{!item.showTypes}}" style='color:#ffbf1c;font-size:22px;'></text>
+      <view class='types'  wx:if="{{item.showTypes}}">
+        <!-- <text class='iconfont icon-biaoti' 
+              style='color:#ffbf1c;font-size:22px;'
+              data-type="title"
+              data-index="{{index}}" >
+        </text> -->
+        <text class='iconfont icon-duanluo' 
+              style='color:#ffbf1c;font-size:22px;'
+              data-type="text"
+              data-index="{{index}}"
+              bindtap='addContent' >
+        </text>
+        <text class='iconfont icon-tupian' 
+              style='color:#ffbf1c;font-size:22px;'
+              data-type="image"
+              data-index="{{index}}" 
+              bindtap='addContent'>
+        </text>
+      </view>
+    </view>
+    <view class='editorBox'>
+        <text class='iconfont icon-shanchu' style='color:#999;font-size:22px;position:absolute;bottom:0px;right:0px;z-index:10' data-index="{{index}}"  bindtap='deleteContent'></text>
+        <view class='imgBox' wx:if="{{item.types === 'image'}}">
+          <image 
+                wx:if="{{item.images !== ''}}"
+                src='{{item.images}}' 
+                class='imgBig' 
+                data-index="{{index}}"
+                ></image>
+          <image class='img' src='/img/uploadImg.png' bindtap='bindChooseImage' data-index="{{index}}" wx:else></image>
+        </view>
+        <view class='inputBox' bindtap='getFocus' data-index="{{index}}" wx:if="{{item.types === 'text'}}">
+            <textarea placeholder='请输入正文内容' 
+              class='text'
+              auto-height="true"
+              maxlength='-1'
+              value="{{item.text}}"
+              focus='{{item.autoFocus}}'
+              data-index="{{index}}"
+              bindblur='saveText'
+              bindconfirm="saveText"
+              />
+        </view>
+    </view>
+  </view>
+  <view class='submitBox'>
+      <view class='submitBtn' bindtap='submitVisit'>发表</view>
+   </view>  
+</view>

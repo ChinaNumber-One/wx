@@ -1,0 +1,37 @@
+<import src="../../wxParse/wxParse.wxml" />
+<view class="container">
+  <view class='headImgBox'>
+    <image class='headImg' src="{{dataInfo.imgUrl}}"></image>
+  </view>
+  <view class='articleInfo'>
+    <view class='articleTitle'>{{dataInfo.title}}</view>
+    <view class='articleDate' wx:if="{{types === 'visit'}}">发表于 {{dataInfo.createdDate}}  {{dataInfo.browseNum || 0}} 浏览</view>
+    <view class='articleDate' wx:if="{{types === 'strategy'}}">发表于 {{dataInfo.createdDate}}  {{dataInfo.viewCount || 0}} 浏览</view> 
+    <view class='userAndPlace'>
+      <view class='userInfo' wx:if="{{types === 'visit'}}">
+        <image class='userImg' src='{{dataInfo.userImg || userImgDefault}}'></image>
+        <view class='userMes'>
+          <view class='userName'>{{dataInfo.nickname}}</view>
+          <view class='replyNum'>
+            <view>有</view>
+            <view class='num'>{{dataInfo.reply || 0}}</view>
+            <view>人评论</view>
+          </view>
+        </view>
+      </view>
+      <view class='strategy' wx:if="{{types === 'strategy'}}">
+            <view>有</view>
+            <view class='strategyNum'>{{dataInfo.collectCount}}</view>
+            <view>人收藏 <text class='iconfont icon-boshiweb_weishoucang collectIcon'></text></view>
+          </view>
+      <view class='place'>{{dataInfo.place}}</view>
+    </view>
+  </view>
+  <view class="wxParse">
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+  </view>
+  <view class='toTop' bindtap='toTop'>
+    <view class='iconfont icon-shengdanfanhuidingbu toTopIcon'></view>
+  </view>
+  
+</view>

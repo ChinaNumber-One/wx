@@ -1,0 +1,7 @@
+<view class='container'>
+  <view class='imageBox'>
+    <image src='{{bgImg[0]}}' bindlongpress='previewImage' class='image'></image>
+    <image class='gzhbg' src='/img/gzhbg.png' ></image>
+    <view class='title'>更多精彩资讯，尽在公众号，长按保存二维码，或者微信搜索“即刻出发WebApp”，快来关注吧～</view>
+  </view>
+</view>

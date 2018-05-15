@@ -1,0 +1,123 @@
+/* pages/strategyList/strategyList.wxss */
+swiper{
+   height: 400rpx; 
+  padding:20rpx 40rpx;
+  background: #fe5a4b;
+  margin-bottom: 10px;
+}
+swiper-item {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}
+.itemImg{
+  width: 100%; 
+  height: 100%;  
+}
+.itemName {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 36rpx;
+  font-weight: 600;
+   line-height: 80rpx; 
+}
+.itemTxt {
+  background: #fff;
+  padding: 0 60rpx 20rpx 60rpx; 
+  height: 180rpx
+}
+.dateAndTime{
+  display: flex;
+  justify-content: space-between;
+}
+.data{
+  color: #ffbf1c;
+}
+
+.strategyItem {
+  height: 230rpx;
+  margin: 0 5px 5px 5px;
+  position: relative;
+  display: flex;
+}
+
+.listItemImg{
+  width: 50%;
+  height: 100%;
+  margin-right: 2%;
+}
+.articleBrows {
+  position: absolute;
+  top: 0;
+  left: 30rpx;
+  background-color: #ff6060;
+  font-size: 10px;
+  color: #fff;
+}
+.userInfo .num {
+  font-size: 10px;
+}
+.listItemTxt {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.listItemTitle {
+   width:100%;
+   display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin-top: 20rpx;
+  font-size: 146x;
+}
+.listItemSummary {
+  width:100%;
+   display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font-size: 12px;
+  color: #333;
+  margin-top: 10rpx;
+  text-indent: 24px;
+}
+.userInfo {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  position: absolute;
+  justify-content: space-between;
+  bottom: 0;
+}
+.userImg {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+.userName{
+  width: 40%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.listItemCity {
+  position: absolute;
+  bottom: 0;
+  left: 10rpx;
+  font-weight: 600;
+  color: #ffbf1c;
+  background: rgba(0, 0, 0, .6);
+  padding: 0 5px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  
+}
+.listItemTime {
+  font-size: 12px;
+  margin-left:20rpx; 
+}

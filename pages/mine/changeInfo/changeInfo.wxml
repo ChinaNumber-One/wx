@@ -1,0 +1,32 @@
+<!--pages/mine/changeInfo/changeInfo.wxml-->
+<view class='container' style="height:{{height}}px;">
+  <view class='userImgBox items'>
+    <text>头像</text>
+    <image src='{{userImg}}' class='userImg'></image>
+  </view>
+  <view class='userNickBox items'>
+    <text>昵称</text>
+    <input value='{{nickName}}' class="nameInput" bindblur='saveName' bindconfirm='saveName'></input>
+  </view>
+  <view class='warming' wx:if='{{wrongName}}'>昵称不合法<text class='iconfont icon-bangzhu' bindtap='showReg'></text></view>
+  <view class='sexBOx items'>
+    <text>性别</text>
+    <radio-group class="radio-group" bindchange="radioChange">
+      <label class="radio" wx:for="{{sexRadio}}" wx:key="{{item}}">
+        <radio value="{{item.value}}" checked="{{item.checked}}"/>{{item.value}}
+      </label>
+    </radio-group>
+  </view>
+  <view class="items">
+    <text>生日</text>
+    <picker mode="date" value="{{birth}}" start="1970-01-01" end="{{birth}}" bindchange="bindDateChange">
+      <view class="picker">
+        当前选择: {{birth}}
+      </view>
+    </picker>
+  </view>
+  <view class='items'>
+    <text>签名</text>
+    <textarea   class='desc' value='{{desc}}' maxlength='50' auto-height='true'></textarea>
+  </view>
+</view>

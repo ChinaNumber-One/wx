@@ -1,0 +1,13 @@
+/* pages/mine/myVIsits/myVIsits.wxss */
+.wxParse-img{
+  width: 100%!important;
+}
+.title {
+  font-size: 24px;
+  font-weight: 600px;
+  padding-left: 48px;
+}
+.visitItems{
+  padding:20px 0 ;
+   border-bottom: 3px solid #ffbf1c; 
+}

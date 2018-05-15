@@ -1,0 +1,66 @@
+<!--pages/hotelImages/hotelImages.wxml-->
+<view class='container'>
+  <view class='topBar'>
+    <view class="menu {{type=='all'?'active':''}}" 
+          data-type="all" 
+          bindtap='menuClick'>全部</view>
+    <view class="menu {{type=='outLook'?'active':''}}" 
+          data-type="outLook" 
+          bindtap='menuClick'>外观</view>
+    <view class="menu {{type=='hall'?'active':''}}" 
+          data-type="hall" 
+          bindtap='menuClick'>大厅</view>
+    <view class="menu {{type=='room'?'active':''}}" 
+          data-type="room" 
+          bindtap='menuClick'>客房</view>
+    <view class="menu {{type=='other'?'active':''}}" 
+          data-type="other" 
+          bindtap='menuClick'>其他</view>
+  </view>
+  <view class='content'>
+
+    <view class='imgTitle' wx:if="{{type==='all'}}">外观({{imgList.outLook.length}})</view>
+    <view class="imgBox" wx:if="{{type==='all'||type==='outLook'}}">
+      <image class='hotelImg' 
+             wx:for="{{imgList.outLook}}" 
+             wx:key="{{item.roomId}}" 
+             src='{{item.imgUrl}}'
+             data-src='{{item.imgUrl}}'
+             bindtap='lookImg'
+             ></image>
+    </view>
+
+    <view class='imgTitle' wx:if="{{type==='all'}}">大厅({{imgList.hall.length}})</view>
+    <view class="imgBox" wx:if="{{type==='all'||type==='hall'}}">
+      <image class='hotelImg' 
+             wx:for="{{imgList.hall}}" 
+             wx:key="{{item.roomId}}" 
+             src='{{item.imgUrl}}'
+             data-src='{{item.imgUrl}}'
+             bindtap='lookImg'
+             ></image>
+    </view>
+
+    <view class='imgTitle' wx:if="{{type==='all'}}">客房({{imgList.roomType.length}})</view>
+    <view class="imgBox" wx:if="{{type==='all'||type==='room'}}">
+      <image class='hotelImg'  
+             wx:for="{{imgList.roomType}}" 
+             wx:key="{{item.roomId}}" 
+             src='{{item.imgUrl}}'
+             data-src='{{item.imgUrl}}'
+             bindtap='lookImg'
+             ></image>
+    </view>
+
+    <view class='imgTitle' wx:if="{{type==='all'}}">其他({{imgList.other.length}})</view>
+    <view class="imgBox" wx:if="{{type==='all'||type==='other'}}">
+      <image class='hotelImg'  
+             wx:for="{{imgList.other}}" 
+             wx:key="{{item.roomId}}" 
+             src='{{item.imgUrl}}'
+             data-src='{{item.imgUrl}}'
+             bindtap='lookImg'
+             ></image>
+    </view>
+  </view>
+</view>

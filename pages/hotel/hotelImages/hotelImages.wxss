@@ -1,0 +1,33 @@
+/* pages/hotelImages/hotelImages.wxss */
+.topBar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 44px;
+  line-height: 42px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #fff;
+}
+.menu {
+  box-sizing: border-box;
+  width: 14%;
+  text-align: center;
+  padding: 0 3%;
+}
+.active {
+  color: #2a93ff;
+  border-bottom: 2px solid #2a93ff;
+}
+.content{
+  margin-top: 64px; 
+}
+.imgTitle {
+  margin-left: 20px;
+}
+.hotelImg {
+  width: 46%;
+  height: 220rpx;
+  margin: 5px 2%;
+}

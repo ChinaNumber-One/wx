@@ -1,0 +1,89 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.9.93",
+	"appid": "wxde04f0834819c093",
+	"projectname": "%E5%8D%B3%E5%88%BB%E5%87%BA%E5%8F%91for%E5%BE%AE%E4%BF%A1",
+	"svr": "",
+	"client": "",
+	"qcloudRoot": "",
+	"miniprogramRoot": "",
+	"pluginRoot": "",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "酒店详情",
+					"pathName": "pages/hotelDetail/hotelDetail",
+					"query": "783242"
+				},
+				{
+					"id": 1,
+					"name": "景点列表",
+					"pathName": "pages/destination/viewsList/viewsList",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "首页",
+					"pathName": "pages/index/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "upload",
+					"pathName": "pages/index/writeVisit/writeVisit",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/mine/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "反馈",
+					"pathName": "pages/mine/feedback/feedback",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "myvisit",
+					"pathName": "pages/mine/myVisits/myVisits",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "changeInfo",
+					"pathName": "pages/mine/changeInfo/changeInfo",
+					"query": ""
+				}
+			]
+		}
+	}
+}
