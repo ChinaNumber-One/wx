@@ -1,6 +1,6 @@
 <!--pages/mine/changeInfo/changeInfo.wxml-->
 <view class='container' style="height:{{height}}px;">
-  <view class='userImgBox items'>
+  <view class='userImgBox items' bindtap='changeImg'>
     <text>头像</text>
     <image src='{{userImg}}' class='userImg'></image>
   </view>
@@ -8,7 +8,7 @@
     <text>昵称</text>
     <input value='{{nickName}}' class="nameInput" bindblur='saveName' bindconfirm='saveName'></input>
   </view>
-  <view class='warming' wx:if='{{wrongName}}'>昵称不合法<text class='iconfont icon-bangzhu' bindtap='showReg'></text></view>
+  <view class='warming' ><text wx:if='{{wrongName}}'>昵称不合法</text><text class='iconfont icon-bangzhu' bindtap='showReg' wx:if='{{wrongName}}'></text></view>
   <view class='sexBOx items'>
     <text>性别</text>
     <radio-group class="radio-group" bindchange="radioChange">
@@ -21,12 +21,16 @@
     <text>生日</text>
     <picker mode="date" value="{{birth}}" start="1970-01-01" end="{{birth}}" bindchange="bindDateChange">
       <view class="picker">
-        当前选择: {{birth}}
+        {{birth}}
       </view>
     </picker>
   </view>
-  <view class='items'>
+  <view class='items descBox'>
     <text>签名</text>
-    <textarea   class='desc' value='{{desc}}' maxlength='50' auto-height='true'></textarea>
+    <textarea   class='desc' value='{{desc}}' maxlength='50' bindblur='saveDesc' bindconfirm='saveDesc' bindinput='saveDesc' style='height:{{textAreaHeight}}px' bindlinechange="bindlinechange"></textarea>
   </view>
+
+  <view class='submitBox'>
+      <view class='submitBtn' bindtap='submitFeedBack'>提交</view>
+   </view>  
 </view>

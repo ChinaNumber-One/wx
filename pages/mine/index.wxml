@@ -19,10 +19,10 @@
     <text>我的游记</text>
   </navigator>
 
-  <view class='selection'>
+  <!-- <view class='selection'>
     <image class='settingIcon' src='/img/selection.png' style='width:26px;height:26px'></image> 
     <text>我的收藏</text>
-  </view>
+  </view> -->
 
   <navigator url="/pages/mine/safeCenter/safeCenter" class='safe'>
     <text class='iconfont icon-anquan' style='font-size:26px;color:#49c9f9'></text>
@@ -50,8 +50,8 @@
     <text>反馈</text>
   </navigator>
 
-  <view class='setting'>
+  <!-- <view class='setting'>
     <image class='settingIcon' src='/img/setting.png' style='width:26px;height:26px'></image> 
     <text>设置</text>
-  </view>
+  </view> -->
 </view>

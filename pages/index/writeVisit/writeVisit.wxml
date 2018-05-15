@@ -5,7 +5,7 @@
     <image src='/img/addImg.png' style='height:160rpx;width:200rpx;'></image>  
     <text style='line-height:24px;font-weight:600px;font-size:12px;text-align:center;color:#999'>点击上传图片(必传)</text>
   </view>
-  <input class='title' bindblur='saveTitle' placeholder='请输入标题(必填)'></input>
+  <input class='title' bindinput='saveTitle'placeholder='请输入标题(必填)'></input>
   <view class='toolBar' 
         wx:for="{{toolBar}}" 
         wx:key="{{index}}"   
@@ -51,8 +51,7 @@
               value="{{item.text}}"
               focus='{{item.autoFocus}}'
               data-index="{{index}}"
-              bindblur='saveText'
-              bindconfirm="saveText"
+              bindinput='saveText'
               />
         </view>
     </view>

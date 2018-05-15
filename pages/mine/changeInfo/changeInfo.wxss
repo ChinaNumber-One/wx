@@ -31,13 +31,34 @@
   margin-left: 5px;
 }
 .nameInput {
-  border-bottom: 1px solid #f1f1f1
+  border-bottom: 1px solid #0fbb6c;
+  padding-left: 10px;
+  height: 30px;
 }
 .userNickBox {
-  margin-bottom: 0;
+   margin-bottom: 0; 
 }
 .desc{
-  height: 50px;
-  text-align: right;
-  line-height: 18px;
+  flex: 1;
+  text-align: left;
+  line-height: 30px;
+  padding-left: 260rpx;
+}
+.descBox{
+  min-height: 50px;
+}
+.submitBox {
+  width: 100%;
+  padding: 10px 0;
+  background: #fff;
+}
+.submitBtn {
+  line-height: 50px;
+  text-align: center;
+  margin: 0 20%;
+  background: #ffbf1c;
+  font-size: 22px;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 10px;
 }

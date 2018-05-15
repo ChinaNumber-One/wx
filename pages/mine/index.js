@@ -32,7 +32,6 @@ Page({
       key: 'USER_INFO',
       success: (res)=> {
         if(res.data.isLogin){
-          console.log(res)
           this.setData({
             isLogin:res.data.isLogin,
             userImg: res.data.userImg,
@@ -63,11 +62,15 @@ Page({
         })
       },
       complete: (res)=>{
-        if (res.data.phone) {
+        console.log(res)
+        if (res.data && res.data.phone) {
+          console.log('存储')
+          this.getUserInfo()
           this.setData({
             noPhone: false
           })
         } else {
+          console.log('跳转')
           wx.navigateTo({
             url: '/pages/mine/safeCenter/safeCenter',
           })
@@ -78,6 +81,7 @@ Page({
       scrollTop: 0,
       duration: 300
     })
+    
   },
 
   /**
@@ -138,7 +142,6 @@ Page({
         id: this.data.userId
       },
       success: (res)=> {
-        console.log(res)
         wx.setStorage({
           key: 'USER_INFO',
           data: {
@@ -168,7 +171,7 @@ Page({
   bindGetUserInfo(e) {
     var userImg = (JSON.parse(e.detail.rawData).avatarUrl)
     var nickName = (JSON.parse(e.detail.rawData).nickName)
-    var reg = /^[A-Za-z0-9_\u554A-\u9C52]+$/;
+    var reg = /^[\w\u4e00-\u9fa5]{3,8}$/;
     if (!reg.test(nickName)) {
       nickName = '违规昵称，请修改'
     }
