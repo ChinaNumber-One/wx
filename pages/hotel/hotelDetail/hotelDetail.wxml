@@ -1,3 +1,4 @@
+<import src="../../../wxParse/wxParse.wxml" />
 <view class="container">
   <view class="headBox" bindtap='lookImages'>
     <image wx:if="{{imgList.roomType[0].imgUrl}}" src='{{imgList.roomType[0].imgUrl}}' class='headImg'></image>
@@ -156,7 +157,10 @@
       </view>
       <view class='rules'>
           <view><text class='iconfont icon-guizeshuoming' style='color:#2a93ff;'></text> 使用规则</view>
-          <view class='rulesItem'>{{dataInfo.subNotice}}</view>
+          <!-- <view class='rulesItem'>{{dataInfo.subNotice}}</view> -->
+          <view class="wxParse rulesItem">
+            <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+          </view>
           <view class='rulesItem'>{{dataInfo.childDescription}}</view>
           <view class='rulesItem'>{{dataInfo.petDescription}}</view>
       </view>

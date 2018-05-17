@@ -1,1 +1,10 @@
 /* pages/hotelList/hotelList.wxss */
+.items{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.itemImg{
+  height: 200px;
+  width: 200px;
+}

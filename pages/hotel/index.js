@@ -169,7 +169,7 @@ Page({
 
   },
   getImgSucc(res) {
-    if(res.data){
+    if (res.data.showapi_res_body){
       app.swiperHotel.push(res.data.showapi_res_body)
       var list = res.data.showapi_res_body.imgList;
       
@@ -207,6 +207,11 @@ Page({
   goHotelDetail(e) {
     wx.navigateTo({
       url: '/pages/hotel/hotelDetail/hotelDetail?hotelId=' + e.currentTarget.dataset.hotelid
+    })
+  },
+  searchHotelList(){
+    wx.navigateTo({
+      url: '/pages/hotel/hotelList/hotelList?city='+this.data.city,
     })
   }
 })

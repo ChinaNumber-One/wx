@@ -1,2 +1,17 @@
 <!--pages/hotelList/hotelList.wxml-->
-<text>pages/hotelList/hotelList.wxml</text>
+<view class='container'>
+  <view class='items' 
+        wx:if="{{dataInfo}}"
+        wx:for="{{dataInfo.contentlist}}"
+        wx:key="{{item.hotalId}}"
+        data-id="{{item.hotalId}}">
+    <view class='imgBox'>
+      <image src='{{item.mainImg}}' class='itemImg'></image>
+    </view>
+    <view class='itemInfo'>
+      <view class='itemName'>{{item.hotalName}}</view>
+      <view class='itemPrice'>{{item.prices}}</view>
+    </view>
+        
+  </view>
+</view>

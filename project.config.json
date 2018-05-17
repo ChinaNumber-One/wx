@@ -33,13 +33,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 0,
 			"list": [
 				{
-					"id": -1,
-					"name": "酒店详情",
-					"pathName": "pages/hotelDetail/hotelDetail",
-					"query": "783242"
+					"id": 0,
+					"name": "酒店",
+					"pathName": "pages/hotel/index",
+					"query": ""
 				},
 				{
 					"id": -1,
@@ -70,6 +70,12 @@
 					"name": "ticketList",
 					"pathName": "pages/ticket/ticketList/ticketList",
 					"query": "startCity=北京&endCity=美国&date=2018-05-18"
+				},
+				{
+					"id": -1,
+					"name": "酒店列表",
+					"pathName": "pages/hotel/hotelList/hotelList",
+					"query": "city=济南"
 				}
 			]
 		}

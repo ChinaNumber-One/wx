@@ -1,4 +1,5 @@
 // pages/hotelDetail/hotelDetail.js
+var WxParse = require('../../../wxParse/wxParse.js');
 const app = getApp()
 Page({
 
@@ -39,13 +40,7 @@ Page({
       hotelId: options.hotelId
     })
     
-    this.getDataSucc();
-    var infoQuery = {
-      hotalId: this.data.hotelId,
-      // showapi_appid:59145,
-      // showapi_sign:'2bb96e1b9b5648ecb3210073ea6eaf71'
-    }
-    this.getData(this.data.hotelInfoInterface, infoQuery, this.getInfoSucc.bind(this))
+    
   },
 
   /**
@@ -66,6 +61,13 @@ Page({
         days: app.days
       })
     } 
+    this.getDataSucc();
+    var infoQuery = {
+      hotalId: this.data.hotelId,
+      // showapi_appid: 59145,
+      // showapi_sign: '2bb96e1b9b5648ecb3210073ea6eaf71'
+    }
+    this.getData(this.data.hotelInfoInterface, infoQuery, this.getInfoSucc.bind(this))
   },
 
   /**
@@ -118,6 +120,7 @@ Page({
     for (var i = 0; i < app.swiperHotel.length; i++) {
       if (app.swiperHotel[i].hotalId === this.data.hotelId) {
         res = app.swiperHotel[i]
+        console.log(res)
       }
     }
     if (res.imgList) {
@@ -155,15 +158,17 @@ Page({
 
   },
   getInfoSucc(res) {
+    console.log(res)
+    WxParse.wxParse('article', 'html', res.data.showapi_res_body.subNotice, this, 5)
     this.setData({
-      buildTime: res.data.showapi_res_body.hotalList[0].renovationTime.substring(0, 4),
-      dataInfo: res.data.showapi_res_body.hotalList[0],
+      buildTime: res.data.showapi_res_body.renovationTime.substring(0, 4),
+      dataInfo: res.data.showapi_res_body,
     })
     //酒店经纬度  计算距离 还需获取 定位的经纬度
-    if (res.data.showapi_res_body.hotalList[0].hotalGPS !== []){
+    if (res.data.showapi_res_body.hotalGPS !== []){
       this.setData({
-        hotelLat: res.data.showapi_res_body.hotalList[0].hotalGPS[0].hotalGPSLat,
-        hotelLon: res.data.showapi_res_body.hotalList[0].hotalGPS[0].hotalGPSLon,
+        hotelLat: res.data.showapi_res_body.hotalGPS[0].hotalGPSLat,
+        hotelLon: res.data.showapi_res_body.hotalGPS[0].hotalGPSLon,
       })
     }
     wx.getLocation({
@@ -194,11 +199,11 @@ Page({
     })
     //获取价格信息
     var priceQuery = {
-      showapi_appid: 59145,
+      // showapi_appid: 59145,
       // showapi_sign: '2bb96e1b9b5648ecb3210073ea6eaf71',
-      // hotalId: this.data.hotelId,
-      // startTIme: app.startTime,
-      // endTime: app.endTime
+      hotalId: this.data.hotelId,
+      startTIme: app.startTime,
+      endTime: app.endTime
     }
     this.getData(this.data.roomPriceInterface, priceQuery, this.getPriceSucc.bind(this), this.ajaxComplete.bind(this))
   },

@@ -25,7 +25,7 @@
     </view>
     <view class='toolBar'>
       <view class='mapIcon iconfont icon-ditu' bindtap='openMap'>  地图</view>
-      <view class="searchBtn">查找酒店</view>
+      <view class="searchBtn" bindtap='searchHotelList'>查找酒店</view>
     </view>
   </view>
   <view class='hotelList'>
