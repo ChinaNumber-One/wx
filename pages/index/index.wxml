@@ -26,10 +26,10 @@
       <image src='../../img/destination.png' class='functionImg'></image>
       <text class='functionTitle'>目的地</text>
     </navigator>
-    <view class='functionItem'>
+    <navigator url="/pages/ticket/index" class='functionItem'>
       <image src='../../img/ticket.png' class='functionImg'></image>
       <text class='functionTitle'>车票</text>
-    </view>
+    </navigator>
     <navigator url='/pages/index/writeVisit/writeVisit' class='functionItem'>
       <image src='../../img/photo.png' class='functionImg'></image>
       <text class='functionTitle'>写游记</text>

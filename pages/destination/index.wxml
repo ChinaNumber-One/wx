@@ -32,17 +32,18 @@
       <image src='../../img/visit.png' class='functionImg'></image>
       <text class='functionTitle'>游记</text>
     </navigator>
-    <view class='functionItem'>
-      <image src='../../img/food.png' class='functionImg'></image>
-      <text class='functionTitle'>美食</text>
-    </view>
+    <navigator url="/pages/destination/viewsList/viewsList" class='functionItem'>
+      <image src='../../img/sight.png' class='functionImg'></image>
+      <text class='functionTitle'>景点</text>
+    </navigator>
     <navigator url="/pages/ticket/index" class='functionItem'>
       <image src='../../img/ticket.png' class='functionImg'></image>
       <text class='functionTitle'>车票</text>
     </navigator>
-    <navigator url="/pages/destination/viewsList/viewsList" class='functionItem'>
-      <image src='../../img/sight.png' class='functionImg'></image>
-      <text class='functionTitle'>景点</text>
+    
+    <navigator url='/pages/index/writeVisit/writeVisit' class='functionItem'>
+      <image src='../../img/photo.png' class='functionImg'></image>
+      <text class='functionTitle'>写游记</text>
     </navigator>
   </view>
   <!--热门目的地  -->

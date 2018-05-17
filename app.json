@@ -24,7 +24,8 @@
     "pages/mine/vipcn/vipcn",
     "pages/mine/myVisits/myVisits",
     "pages/mine/changeInfo/changeInfo",
-    "pages/ticket/index"
+    "pages/ticket/index",
+    "pages/ticket/ticketList/ticketList"
   ],
   "window": {
     "backgroundTextStyle": "dark",

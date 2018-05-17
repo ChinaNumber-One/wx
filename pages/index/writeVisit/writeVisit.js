@@ -8,6 +8,7 @@ Page({
   data: {
     userId:null,
     phone:null,
+    showPage:false,
     productInfo: {},
     imgs: 0,
     imgUrls:[],
@@ -17,7 +18,6 @@ Page({
     headImg:'',
     title:'',
     content:'',
-    autoFocus: false,
     toolBar:[{
       showTypes:false,
       types:'text',
@@ -88,11 +88,30 @@ Page({
           userId: res.data.userId,
           phone: res.data.phone
         })
+        
       },
       complete: (res) => {
-        if (res.data.phone) {
-          this.setData({
-            noPhone: false
+        if (res.errMsg === 'getStorage:ok' && res.data.phone ) {
+          wx.getStorage({
+            key: 'USER_INFO',
+            complete: (data) => {
+              if (data.errMsg !== 'getStorage:ok'){
+                wx.showToast({
+                  title: '请授权登陆才能进行操作,即将跳转',
+                  icon:'none',
+                  duration:2000
+                })
+                setTimeout(()=>{
+                  wx.switchTab({
+                    url: '/pages/mine/index',
+                  })
+                },2000)
+              } else {
+                this.setData({
+                  showPage:true
+                })
+              }
+            },
           })
         } else {
           wx.navigateTo({
@@ -147,7 +166,6 @@ Page({
   showTypes(e){
     var index = e.currentTarget.dataset.index
     this.data.toolBar[index].showTypes = true
-    this.data.toolBar[index].autoFocus = false
     this.setData({
       toolBar: this.data.toolBar
     })
@@ -189,13 +207,11 @@ Page({
     var value = e.detail.value
     var index = e.currentTarget.dataset.index;
     this.data.toolBar[index].text = value;
-    this.data.toolBar[index].autoFocus = false ;
     this.setData({
       toolBar: this.data.toolBar
     })
   },
   submitVisit(){
-        
       var reg1 = /^http/
       var reg2 = /^wxfile/
       if (reg1.test(this.data.title) || reg2.test(this.data.title)) {
@@ -324,7 +340,7 @@ Page({
   publishVisit(){
     var index = 0
     for(var i = 0;i<this.data.toolBar.length;i++){
-      if(this.data.toolBar[i].types === 'image'){
+      if (this.data.toolBar[i].types === 'image' && this.data.toolBar[i].images){
         this.data.str+='<p><img src="'+this.data.imgUrls[index]+'"></p>'
         index++
       } else {
@@ -354,10 +370,11 @@ Page({
           icon: 'success',
           duration: 2000,
           complete:res=>{
-            //setTimeOut
-            // wx.navigateTo({
-            //   // url: '/pages'
-            // })
+            setTimeout(()=>{
+              wx.redirectTo({
+                url: '/pages/mine/myVisits/myVisits',
+              })
+            },2000)
           }
         })
       }
@@ -365,19 +382,4 @@ Page({
   },
   
   
-  
-  
-  getFocus(e){
-    var index = e.currentTarget.dataset.index;
-    for(var i=0;i<this.data.toolBar.length;i++){
-      if(i === index ){
-        this.data.toolBar[i].autoFocus = true
-      } else {
-        this.data.toolBar[i].autoFocus = false
-      }
-    }
-    this.setData({
-      toolBar: this.data.toolBar
-    })
-  }
 })

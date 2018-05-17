@@ -33,25 +33,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
 					"name": "酒店详情",
 					"pathName": "pages/hotelDetail/hotelDetail",
 					"query": "783242"
-				},
-				{
-					"id": 1,
-					"name": "景点列表",
-					"pathName": "pages/destination/viewsList/viewsList",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "首页",
-					"pathName": "pages/index/index",
-					"query": ""
 				},
 				{
 					"id": -1,
@@ -67,21 +55,21 @@
 				},
 				{
 					"id": -1,
-					"name": "反馈",
-					"pathName": "pages/mine/feedback/feedback",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "myvisit",
-					"pathName": "pages/mine/myVisits/myVisits",
-					"query": ""
-				},
-				{
-					"id": -1,
 					"name": "changeInfo",
 					"pathName": "pages/mine/changeInfo/changeInfo",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "ticket",
+					"pathName": "pages/ticket/index",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "ticketList",
+					"pathName": "pages/ticket/ticketList/ticketList",
+					"query": "startCity=北京&endCity=美国&date=2018-05-18"
 				}
 			]
 		}

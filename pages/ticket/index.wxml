@@ -1,2 +1,48 @@
 <!--pages/ticket/index.wxml-->
-<text>pages/ticket/index.wxml</text>
+<view class='container'>
+  <view class='content'>
+    <view class='place'>
+        <view class='startCity'>
+          <view class='placeTitle'>出发地</view>
+          <view class='placeName' bindtap='getStartCity'>{{startCity}}</view>
+        </view> 
+        <view class='endCity'>
+          <view class='placeTitle'>到达地</view>
+          <view class='placeName' bindtap='getEndCity'>{{endCity}}</view>
+        </view>  
+        <text class='iconfont icon-wangfan'></text>     
+    </view>
+  </view>
+
+
+  <view class="calendar">
+    <view class="date-display flex">
+      <view class="next-prev">
+        <view class="arrow prev iconfont icon-arrow-left" bindtap="changeMonth" id="prev"></view>
+      </view>
+      <view class="selected-date">{{currYear}}年{{currMonth}}月</view>
+      <view class="next-prev">
+        <view class="arrow next iconfont icon-arrow-right1" bindtap="changeMonth" id="next"></view>
+      </view>
+    </view>
+    <view class="week-display flex">
+        <view wx:for="{{week}}" wx:key="{{index}}" class="week-cell {{item.class}}">{{item.value}}</view>
+      </view>
+    <view class="date-picker">
+      <view class="flex">
+        <view wx:for="{{emptyGrids}}" wx:key="{{index}}" class="date-cell" wx:if="{{emptyGrids !== 7}}"></view>
+        <view wx:for="{{days}}" wx:key="{{index}}" class="date-cell" bindtap="selectDate" data-selected="{{[currYear, currMonth, item.value]}}">
+          <view class="{{item.class}}{{selected == item.value ? ' selected': ''}}" data-selected="{{[currYear, currMonth, item.value]}}">{{item.value}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+
+  <view class='headImg'>
+    <image class='img' src='/img/ticketBg.png'></image>
+    <view class='submitBox'>
+      <view class='submitBtn' bindtap='submit'>搜索</view>
+    </view>  
+  </view>
+</view>

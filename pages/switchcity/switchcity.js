@@ -4,6 +4,7 @@ Page({
     showLetter: "",
     winHeight: 0,
     cityList: [],
+    ticketType:null,
     isShowLetter: false,
     scrollTop: 0,//置顶高度
     scrollTopId: '',//置顶id
@@ -34,6 +35,13 @@ Page({
       this.setData({
         page: options.page,
         backPath: "/pages/destination/searchView/searchView",
+        city: app.city
+      })
+    } else if (options.page === 'ticket') {
+      this.setData({
+        page: options.page,
+        ticketType:options.type,
+        backPath: "/pages/ticket/index",
         city: app.city
       })
     }
@@ -113,7 +121,15 @@ Page({
       scrollTop: 0,
       completeList: [],
     })
-    app.city = e.currentTarget.dataset.city   
+    if (this.data.page === 'ticket' && this.data.ticketType === 'from') {
+      app.startCity = e.currentTarget.dataset.city 
+    } 
+    else if (this.data.page === 'ticket' && this.data.ticketType === 'to') {
+      app.endCity = e.currentTarget.dataset.city
+    }
+    if (this.data.page !== 'ticket'){
+      app.city = e.currentTarget.dataset.city   
+    }
     //判断所选城市是否在 历史访问中存在，改变在历史访问数组中的位置
     wx.getStorage({
       key: 'COMMON_CITY_LIST',
@@ -138,6 +154,10 @@ Page({
       }.bind(this)
     })
     if (this.data.page === 'viewList') {
+      wx.navigateBack({
+        delta: 1
+      })
+    } else if (this.data.page === 'ticket') {
       wx.navigateBack({
         delta: 1
       })

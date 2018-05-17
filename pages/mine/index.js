@@ -139,6 +139,9 @@ Page({
         id: this.data.userId
       },
       success: (res)=> {
+        if (!res.data.data.headImg) {
+          return false
+        }
         wx.setStorage({
           key: 'USER_INFO',
           data: {
@@ -166,6 +169,9 @@ Page({
     })
   },
   bindGetUserInfo(e) {
+    wx.showLoading({
+      title: '正在获取头像，昵称',
+    })
     var userImg = (JSON.parse(e.detail.rawData).avatarUrl)
     var nickName = (JSON.parse(e.detail.rawData).nickName)
     var reg = /^[\w\u4e00-\u9fa5]{3,8}$/;
@@ -189,6 +195,7 @@ Page({
             'desc': '这个人很懒，什么都没写～'
           },
           success:  (res)=> {
+            wx.hideLoading()
             this.getUserInfo();
           }
         })

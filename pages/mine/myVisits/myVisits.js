@@ -18,20 +18,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
 
     wx.getStorage({
       key: 'ISLOGIN',
@@ -54,7 +40,21 @@ Page({
         }
       }
     })
-    
+
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+  
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
   },
 
   /**
@@ -112,7 +112,7 @@ Page({
               this.data.myVisits.push(res.data.data.list[i])
             }
             this.setData({
-              articleArr: arr,
+              articleArr: arr.reverse(),
               myVisits: this.data.myVisits
             })
             wx.hideLoading()
@@ -121,8 +121,14 @@ Page({
           wx.hideLoading()
           wx.showToast({
             title: '您还为发表过任何游记！',
-            icon:'none'
+            icon:'none',
+            duration:2000
           })
+          setTimeout(()=>{
+            wx.navigateBack({
+              delta: 1
+            })
+          },2000)
         }
       }
     })

@@ -1,5 +1,5 @@
 <!--  -->
-<view class='container' style='padding-bottom:70px;'>
+<view class='container' style='padding-bottom:70px;' wx:if="{{showPage}}">
   <image src='{{headImg}}' wx:if="{{headImg !== ''}}" style='width:100%;height:340rpx;'  bindtap='addHeadImg'></image>
   <view style='width:100%;height:340rpx;display:flex;justify-content: center;align-items: center;  flex-direction: column;' wx:else bindtap='addHeadImg'>
     <image src='/img/addImg.png' style='height:160rpx;width:200rpx;'></image>  
@@ -43,13 +43,12 @@
                 ></image>
           <image class='img' src='/img/uploadImg.png' bindtap='bindChooseImage' data-index="{{index}}" wx:else></image>
         </view>
-        <view class='inputBox' bindtap='getFocus' data-index="{{index}}" wx:if="{{item.types === 'text'}}">
+        <view class='inputBox'  data-index="{{index}}" wx:if="{{item.types === 'text'}}">
             <textarea placeholder='请输入正文内容' 
               class='text'
               auto-height="true"
               maxlength='-1'
               value="{{item.text}}"
-              focus='{{item.autoFocus}}'
               data-index="{{index}}"
               bindinput='saveText'
               />

@@ -1,0 +1,73 @@
+/* pages/ticket/ticketList/ticketList.wxss */
+.flex{
+  display: flex;
+}
+.item{
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+.start, .info, .end {
+  width: 33.3%;
+  text-align: center;
+}
+.time{
+  font-size: 14px;
+  color: #2b9cec;
+}
+.place {
+  font-size: 18px;
+  font-weight: 600;
+ 
+}
+.trainName{
+  font-size: 14px;
+  font-weight: 900;
+}
+.seats {
+  justify-content: space-around;
+  align-items: center;
+}
+.red{
+  color: #f76048;
+}
+.gray{
+  color:#9e9e9e;
+}
+
+.green{
+  color:#38b15a;
+}
+.seatsItem text {
+  padding: 0 20px;
+}
+.seatsItem {
+  padding: 5px 10px;
+  text-align: center;
+}
+.noticket {
+  flex-direction: column;
+  align-items: center;
+  padding: 100px 20px;
+}
+.block{
+  font-weight: 600;
+  font-size: 16px;
+  color: #000;
+}
+.noticketText{
+  color: #666;
+  text-indent: 2rem;
+}
+.noticketImg{
+  height: 120px;
+  width: 200px;
+}
+.back{
+  background: #3c769e;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 18px;
+  line-height: 30px;
+  border-radius: 5px;
+  margin-top: 30px;
+}

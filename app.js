@@ -12,6 +12,10 @@ App({
   //酒店相册
   hotelImg:null,
   city: '济南',
+  //出发城市（车票）
+  startCity:'请选择',
+  //到达城市
+  endCity:'请选择',
   //热门城市
   hotCity: [],
   //入住时间

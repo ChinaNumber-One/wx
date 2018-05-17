@@ -1,0 +1,37 @@
+<!--pages/ticket/ticketList/ticketList.wxml-->
+<view class='container'>
+  <view class='item' wx:for="{{list}}" wx:key="{{item.trainName}}" wx:if="{{list&&showPage}}">
+    <view class='flex'>
+      <view class='start'>
+        <view class='place'>{{item.startStationName}}</view>
+        <view class='time'>{{item.startTime}} 出发</view>
+      </view>
+      <view class='info'>
+        <view style='font-size:14px;color:#999'>车次</view>
+        <view class='trainName'>{{item.trainName}}</view>
+      </view>
+      <view class='end'>
+        <view class='place'>{{item.endStationName}}</view>
+        <view class='time'>{{item.endTime}} 到达</view>
+      </view>
+    </view>
+    <view class='seats flex'>
+      <view wx:for="{{item.seats}}" wx:key="{{index}}" class="seatsItem">
+        <view>{{item.name}}</view>
+        <view class="{{item.inventory === 0?'gray':'green' }}">{{item.inventory}}张</view>
+        <view class='red'>¥{{item.price}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='noticket flex' wx:if="{{!list&&showPage}}">
+    <view class='noticketText'>
+      很抱歉，按您的查询条件，当前未找到从
+      <text class='block'> {{startCity}} </text>到<text class='block'> {{endCity}} </text>
+      的列车。请您更换条件，重新查询
+    </view>
+    <view class='noticketImgBox'>
+      <image class='noticketImg' mode="aspectFit" src='/img/noTicket.png'></image>
+    </view>
+    <view class='back' bindtap='backToSearch'>重新查询</view>
+  </view>
+</view>
