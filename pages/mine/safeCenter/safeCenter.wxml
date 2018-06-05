@@ -15,9 +15,9 @@
   <view class='bindPhoneBox'>
     <view class='bindPhoneBtn' bindtap='bindPhone'>确定</view>
   </view>
-  <view class='loginInit'>
+  <!-- <view class='loginInit'>
     已有网页版手机账号？，点此直接登陆
-  </view>
+  </view> -->
 </view> 
 
 <view class='container hasPhone' wx:else>

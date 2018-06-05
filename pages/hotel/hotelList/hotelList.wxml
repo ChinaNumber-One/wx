@@ -1,17 +1,17 @@
 <!--pages/hotelList/hotelList.wxml-->
 <view class='container'>
   <view class='items' 
-        wx:if="{{dataInfo}}"
-        wx:for="{{dataInfo.contentlist}}"
+        wx:for="{{dataInfo}}"
         wx:key="{{item.hotalId}}"
-        data-id="{{item.hotalId}}">
+        wx:if="{{dataInfo && item.prices!=99999999}}"
+        data-hotelId="{{item.hotalId}}"
+        bindtap="goHotelDetail">
     <view class='imgBox'>
-      <image src='{{item.mainImg}}' class='itemImg'></image>
+      <image src='{{item.mainImg || loading}}' class='itemImg'></image>
     </view>
     <view class='itemInfo'>
       <view class='itemName'>{{item.hotalName}}</view>
-      <view class='itemPrice'>{{item.prices}}</view>
+      <view class='itemPrice'>¥{{item.prices || '????'}}起</view>
     </view>
-        
   </view>
 </view>

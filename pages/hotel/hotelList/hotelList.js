@@ -6,9 +6,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    loading:'/img/loadingImg.png',
+    pageUp:null,
+    pageDown:null,
     city:'',
     page:1,
-    dataInfo:null
+    dataInfo:[]
   },
 
   /**
@@ -18,7 +21,7 @@ Page({
     this.setData({
       city:options.city
     })
-    this.getCityList()
+    this.getHotelList()
   },
 
   /**
@@ -32,7 +35,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    // this.getHotelList()
     
   },
 
@@ -54,14 +57,17 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    this.getHotelList()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    this.setData({
+      page:this.data.page+1
+    })
+    this.getHotelList()
   },
 
   /**
@@ -70,48 +76,68 @@ Page({
   onShareAppMessage: function () {
   
   },
-  getCityList(){
+  getHotelList(){
+    wx.showLoading({
+      title: '正在加载……',
+      mask: true,
+    })
     wx.request({
       url: 'https://route.showapi.com/1450-1',
       data:{
-        showapi_appid:59145,
-        showapi_sign:'2bb96e1b9b5648ecb3210073ea6eaf71',
+        showapi_appid:65611,
+        showapi_sign:'160177dac6604f0d947485ebbe89e94d',
         cityName:this.data.city,
         page:this.data.page
       },
       success:res=>{
-        if(res.data.showapi_res_body.contentlist.length>0){
-          res.data.showapi_res_body.contentlist = res.data.showapi_res_body.contentlist.splice(0, 5)
+        if (res.data.showapi_res_body.contentlist&&res.data.showapi_res_body.contentlist.length>0){
+          // this.data.pageUp = res.data.showapi_res_body.contentlist.splice(0,10)
+          // this.data.pageDown = res.data.showapi_res_body.contentlist.splice(10, 10)
+          var newArr = this.data.dataInfo.concat(res.data.showapi_res_body.contentlist)
           this.setData({
-            dataInfo: res.data.showapi_res_body
+            dataInfo: newArr
           })
+          console.log(this.data.dataInfo)
           this.loopDataInfo()
+        }
+      },
+      complete: res=>{
+        if(res.data.showapi_res_code === 0){
+          wx.hideLoading()
+          wx.stopPullDownRefresh()
+        } else if (res.data.showapi_res_code === -1) {
+          wx.hideLoading()
+          return false;
         }
       }
     })
   },
   loopDataInfo(){
-    for(let i = 0;i<this.data.dataInfo.contentlist.length;i++){
+    var arr = []
+    for(let i = 0;i<this.data.dataInfo.length;i++){
 
       //获取图片
       wx.request({
         url: 'https://route.showapi.com/1450-3',
         data: {
-          showapi_appid: 59145,
-          showapi_sign: '2bb96e1b9b5648ecb3210073ea6eaf71',
-          hotalId: this.data.dataInfo.contentlist[i].hotalId,
+          showapi_appid: 65611,
+          showapi_sign: '160177dac6604f0d947485ebbe89e94d',
+          hotalId: this.data.dataInfo[i].hotalId,
         },
         success:res=>{
-          if(res.data.showapi_res_body.imgList.length>0){
-            app.swiperHotel.push(res.data.showapi_res_body)
+          if (res.data.showapi_res_body.imgList&&res.data.showapi_res_body.imgList.length>0){
+            arr.push(res.data.showapi_res_body)
+            app.swiperHotel = arr
             for (let j = 0; j < res.data.showapi_res_body.imgList.length;j++){
               if (res.data.showapi_res_body.imgList[j]&&res.data.showapi_res_body.imgList[j].imgType === 4 && res.data.showapi_res_body.imgList[j].isRoomDefault ===1){
-                this.data.dataInfo.contentlist[i].mainImg = res.data.showapi_res_body.imgList[j].imgUrl
-                console.log(this.data.dataInfo.contentlist[i].mainImg + '----------------'+i)
+                this.data.dataInfo[i].mainImg = res.data.showapi_res_body.imgList[j].imgUrl
+                
                 break;
               }
             }
-            
+            this.setData({
+              dataInfo:this.data.dataInfo
+            })
           }
         }
       })
@@ -119,30 +145,32 @@ Page({
       wx.request({
         url: 'https://route.showapi.com/1450-5',
         data: {
-          showapi_appid: 59145,
-          showapi_sign: '2bb96e1b9b5648ecb3210073ea6eaf71',
-          hotalId: this.data.dataInfo.contentlist[i].hotalId,
+          showapi_appid: 65611,
+          showapi_sign: '160177dac6604f0d947485ebbe89e94d',
+          hotalId: this.data.dataInfo[i].hotalId,
           startTime: app.startTime,
           endTime:app.endTime
         },
         success:res=>{
-          if (res.data.showapi_res_body.result.length>0){
+          var minPrice = 99999999;
+          if (res.data.showapi_res_body.result&&res.data.showapi_res_body.result.length>0){
             for (var m = 0; m < res.data.showapi_res_body.result.length;m++){
               if (res.data.showapi_res_body.result[m].proSaleInfoDetails.length === 0){
-                break;
+                // break;
+                // this.data.dataInfo[i].prices = '面议'
               }else {
-                var minPrice = res.data.showapi_res_body.result[m].proSaleInfoDetails[0].distributorPrice;
-                for (var rooms = 0; rooms < res.data.showapi_res_body.result[m].proSaleInfoDetails.length; rooms++) {
+                
+                for (let rooms = 0; rooms < res.data.showapi_res_body.result[m].proSaleInfoDetails.length; rooms++) {
                   //最低价格
-        
                   minPrice = minPrice > res.data.showapi_res_body.result[m].proSaleInfoDetails[rooms].distributorPrice ?
                     res.data.showapi_res_body.result[m].proSaleInfoDetails[rooms].distributorPrice : minPrice;
                 }
+                
               }
-             
+              
             }
-  
-            this.data.dataInfo.contentlist[i].prices = minPrice
+            this.data.dataInfo[i].prices = minPrice
+            
             this.setData({
               dataInfo: this.data.dataInfo
             })
@@ -150,10 +178,15 @@ Page({
           
         }
       })
-
+      // break;
     }
     this.setData({
       dataInfo: this.data.dataInfo
     })
-  }
+  },
+  goHotelDetail(e) {
+    wx.navigateTo({
+      url: '/pages/hotel/hotelDetail/hotelDetail?hotelId=' + e.currentTarget.dataset.hotelid
+    })
+  },
 })

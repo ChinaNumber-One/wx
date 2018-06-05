@@ -24,12 +24,12 @@ Page({
     roomInfo:null,
     showRoomInfo:false,
     distance:'计算距离中……',
-    hotelInfoInterface:'https://www.wordming.cn/static/json/hotelBaseInfo.json',
-    hotelRoomInterface:'https://www.wordming.cn/static/json/hotelRoom.json',
-    roomPriceInterface: 'https://www.wordming.cn/static/json/hotelPrice.json'
-    // hotelInfoInterface: 'https://route.showapi.com/1450-4',
-    // hotelRoomInterface: 'https://route.showapi.com/1450-2',
-    // roomPriceInterface: 'https://route.showapi.com/1450-5'
+    // hotelInfoInterface:'https://www.wordming.cn/static/json/hotelBaseInfo.json',
+    // hotelRoomInterface:'https://www.wordming.cn/static/json/hotelRoom.json',
+    // roomPriceInterface: 'https://www.wordming.cn/static/json/hotelPrice.json'
+    hotelInfoInterface: 'https://route.showapi.com/1450-4',
+    hotelRoomInterface: 'https://route.showapi.com/1450-2',
+    roomPriceInterface: 'https://route.showapi.com/1450-5'
   },
 
   /**
@@ -64,8 +64,8 @@ Page({
     this.getDataSucc();
     var infoQuery = {
       hotalId: this.data.hotelId,
-      // showapi_appid: 59145,
-      // showapi_sign: '2bb96e1b9b5648ecb3210073ea6eaf71'
+      showapi_appid: 65611,
+      showapi_sign: '160177dac6604f0d947485ebbe89e94d'
     }
     this.getData(this.data.hotelInfoInterface, infoQuery, this.getInfoSucc.bind(this))
   },
@@ -120,7 +120,6 @@ Page({
     for (var i = 0; i < app.swiperHotel.length; i++) {
       if (app.swiperHotel[i].hotalId === this.data.hotelId) {
         res = app.swiperHotel[i]
-        console.log(res)
       }
     }
     if (res.imgList) {
@@ -158,7 +157,6 @@ Page({
 
   },
   getInfoSucc(res) {
-    console.log(res)
     WxParse.wxParse('article', 'html', res.data.showapi_res_body.subNotice, this, 5)
     this.setData({
       buildTime: res.data.showapi_res_body.renovationTime.substring(0, 4),
@@ -177,12 +175,13 @@ Page({
     })
     var roomQuery = {
       hotalId: this.data.hotelId,
-      // showapi_appid: 59145,
-      // showapi_sign: '2bb96e1b9b5648ecb3210073ea6eaf71'
+      showapi_appid: 65611,
+      showapi_sign: '160177dac6604f0d947485ebbe89e94d'
     }
     this.getData(this.data.hotelRoomInterface ,roomQuery, this.getRoomSucc.bind(this))
   },
   getRoomSucc(res){
+    console.log(res.data.showapi_res_body.roomList)
     if (res.data.showapi_res_body.roomList && this.data.imgList.roomType){
       for (var i = 0; i < res.data.showapi_res_body.roomList.length; i++){
         res.data.showapi_res_body.roomList[i].imgUrl = []
@@ -199,10 +198,10 @@ Page({
     })
     //获取价格信息
     var priceQuery = {
-      // showapi_appid: 59145,
-      // showapi_sign: '2bb96e1b9b5648ecb3210073ea6eaf71',
+      showapi_appid: 65611,
+      showapi_sign: '160177dac6604f0d947485ebbe89e94d',
       hotalId: this.data.hotelId,
-      startTIme: app.startTime,
+      startTime: app.startTime,
       endTime: app.endTime
     }
     this.getData(this.data.roomPriceInterface, priceQuery, this.getPriceSucc.bind(this), this.ajaxComplete.bind(this))
@@ -216,10 +215,11 @@ Page({
           this.data.roomList[i].priceInfo = res.data.showapi_res_body.result[j]
           //判断剩余房间数
           if (res.data.showapi_res_body.result[j].proSaleInfoDetails.length === 0){
-            this.data.roomList.splice(i,1)
+            this.data.roomList[i].showPrice = false;
           } else {
+            this.data.roomList[i].showPrice = true
             var sum = 0;
-            var minPrice = res.data.showapi_res_body.result[j].proSaleInfoDetails[0].distributorPrice;
+            var minPrice = 9999999999;
             for (var rooms = 0; rooms < res.data.showapi_res_body.result[j].proSaleInfoDetails.length;rooms++){
               sum += res.data.showapi_res_body.result[j].proSaleInfoDetails[rooms].inventoryStats
               //最低价格
@@ -227,6 +227,7 @@ Page({
                           res.data.showapi_res_body.result[j].proSaleInfoDetails[rooms].distributorPrice : minPrice;
             }
             this.data.roomList[i].priceInfo.minPrice = minPrice
+            // console.log(minPrice)
             if (sum === Number(res.data.showapi_res_body.result[j].proSaleInfoDetails.length)*4){
               this.data.roomList[i].roomBanSale = true
             } else {
@@ -298,13 +299,13 @@ Page({
     this.getDataSucc();
     var infoQuery = {
       hotalId: this.data.hotelId,
-      // showapi_appid: 59145,
-      // showapi_sign: '2bb96e1b9b5648ecb3210073ea6eaf71'
+      showapi_appid: 65611,
+      showapi_sign: '160177dac6604f0d947485ebbe89e94d'
     }
     var roomQuery = {
       hotalId: this.data.hotelId,
-      // showapi_appid: 59145,
-      // showapi_sign: '2bb96e1b9b5648ecb3210073ea6eaf71'
+      showapi_appid: 65611,
+      showapi_sign: '160177dac6604f0d947485ebbe89e94d'
     }
     this.getData(this.data.hotelInfoInterface, infoQuery, this.getInfoSucc.bind(this))
     this.getData(this.data.hotelRoomInterface, roomQuery, this.getRoomSucc.bind(this))
@@ -377,6 +378,11 @@ Page({
     this.data.roomInfo.showMoreRoomFacilities = false
     this.setData({
       roomInfo: this.data.roomInfo
+    })
+  },
+  findWay(){
+    wx.navigateTo({
+      url: '/pages/hotel/hotelDetail/navigation/navigation?lat=' + this.data.hotelLat + '&lon=' + this.data.hotelLon + '&placeName='+this.data.dataInfo.hotalName,
     })
   }
 })

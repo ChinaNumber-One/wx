@@ -3,8 +3,31 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  padding: 5px 10px;
+  height: 115px;
 }
 .itemImg{
-  height: 200px;
-  width: 200px;
+  height: 100px;
+  width: 150px;
+  margin-right: 10px;
+}
+.itemInfo {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  height: 100%;
+}
+.itemName{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  font-size: 18px;
+  font-weight: 600;
+}
+.itemPrice{
+  padding-left: 10px;
+  font-size: 20px;
+  color: #ed4f17;
 }

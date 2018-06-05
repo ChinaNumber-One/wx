@@ -1,0 +1,70 @@
+<view class='container' style='height:{{height}}px;width:{{width}}px'>
+  <view class="flex-style">
+    <view class="flex-item {{item.class}}" bindtouchstart="changeType" wx:for="{{types}}" data-value="{{item.name}}" wx:key="{{index}}">{{item.name}}</view>
+  </view>
+  <view class="map_box">
+    <map id="navi_map" longitude="{{markers[0].longitude}}" latitude="{{markers[0].latitude}}" scale="14" markers="{{markers}}" polyline="{{polyline}}" show-location ></map>
+  </view>
+  <view class="text_box">
+    <view class='expandBox' bindtap='showSteps'>
+      <view class='expand'></view>
+    </view>
+    <view class='placeName'>{{placeName}}</view>
+    <view class='textBox'>
+      <text class="text">{{distance}}</text>
+      <text class='text'>{{textData.name}}</text>
+    </view>
+    <view class='textBox'>
+      <text class="text">{{cost}}</text>
+      <text class='text'>{{textData.desc}}</text>
+    </view>
+    <view class='stepList' wx:if="{{showSteps}}">
+
+      <view class='stepTitle'>
+        <text class='title'>{{title}}</text>
+        <text class='icon iconfont {{icon}}'></text>
+      </view>
+      <view class='stepItem' wx:for="{{steps}}" wx:key="{{index}}">
+        <view wx:if="{{!showBus}}">
+          <text>{{index+1}}、</text>{{item.instruction}}
+        </view>
+        <view wx:else>
+          <view class=''>
+            <text class='time'>{{item.time}}</text>
+            <text class='walk iconfont icon-buxing'>{{item.walking_distance}}米</text>
+            <text class='detailBtn' data-index="{{index}}" bindtap='wayDetail'>详情</text>
+            <view class='cost'>
+              <text wx:if="{{item.cost}}">{{item.cost}}元·</text>
+              <text>{{item.segments[0].bus.buslines[0].departure_stop.name}}上车</text>
+            </view>
+            <view class='busNum'>
+              <view wx:for="{{item.segments}}" wx:key="index" wx:if="{{item.bus.buslines.length>0}}" style="padding:2px 0;">
+                <view wx:if="{{index>0}}" class="arrorDown iconfont icon-icon-arrow-bottom2">换乘</view>
+
+                <view wx:for="{{item.bus.buslines}}" wx:key="{{item.name}}" data-index='{{index}}' bindtap='changeBusWay'>
+                 <text wx:if="{{index>0}}">或</text> 
+                <text class='busName'>{{item.name}}</text>
+                </view>
+
+              </view>
+            </view>
+            <view wx:if="{{index === wayIndex}}" class='busStep'>
+              <view wx:for="{{item.segments}}" wx:key="index" >
+                <view wx:for="{{item.walking.steps}}" wx:key="index">
+                  {{item.instruction}}
+                </view>
+                <view>
+                  <text class='black' wx:if="{{item.bus.buslines.length>0}}"> 乘坐 </text>{{item.bus.buslines[changeBusIndex].name}}</view>
+                <view>{{item.bus.buslines[changeBusIndex].arrival_stop.name}}
+                  <text class='black' wx:if="{{item.bus.buslines.length>0}}"> 下车 </text>
+                </view>
+              </view>
+            </view>
+          </view>
+
+        </view>
+      </view>
+
+    </view>
+  </view>
+</view>

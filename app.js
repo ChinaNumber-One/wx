@@ -78,12 +78,19 @@ App({
   setDefaultTime(){
     var dd = new Date();
     var d = dd.getDate();
+    var m1 = dd.getMonth() + 1;
+    var y1 = dd.getFullYear();
+
+
     dd.setDate(d + 1);
-    var y = dd.getFullYear();
-    var m = dd.getMonth() + 1;
+    var y2 = dd.getFullYear();
+    var m2 = dd.getMonth() + 1;
     var nextd = dd.getDate();
-    if (m < 10) {
-      m = "0" + m
+    if (m1 < 10) {
+      m1 = "0" + m1
+    }
+    if (m2 < 10) {
+      m2 = "0" + m2
     }
     if (d < 10) {
       d = "0" + d
@@ -91,7 +98,7 @@ App({
     if (nextd < 10) {
       nextd = "0" + nextd
     }
-    this.startTime = y + "-" + m + "-" + d
-    this.endTime = y + "-" + m + "-" + nextd
+    this.startTime = y1 + "-" + m1 + "-" + d
+    this.endTime = y2 + "-" + m2 + "-" + nextd
   }
 })

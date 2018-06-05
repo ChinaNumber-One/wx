@@ -50,8 +50,8 @@
     <text>反馈</text>
   </navigator>
 
-  <!-- <view class='setting'>
-    <image class='settingIcon' src='/img/setting.png' style='width:26px;height:26px'></image> 
-    <text>设置</text>
-  </view> -->
+   <view class='outLogin' bindtap='outLogin'>
+    <text class='iconfont icon-tuichudenglu' style='font-size:26px;color:#999'></text>
+    <text>退出登陆</text>
+  </view> 
 </view>

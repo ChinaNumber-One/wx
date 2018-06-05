@@ -6,7 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    i:0,
     hotelList:[],
+    autoplay: false,    
     city:'',
     startTime:'',
     showStartTime:'',
@@ -17,17 +19,28 @@ Page({
     locationInfo: null,
     mainImg: [],
     //购买接口
-    // hotelListInterfage:'https://route.showapi.com/1450-1?showapi_appid=59145&showapi_sign=2bb96e1b9b5648ecb3210073ea6eaf71&cityName=',
-    // hotelImgInterfage:'https://route.showapi.com/1450-3?showapi_appid=59145&showapi_sign=2bb96e1b9b5648ecb3210073ea6eaf71&hotalId='
-    //模拟数据接口
-    hotelListInterfage: 'https://www.wordming.cn/static/json/searchHotel.json?cityName=',
-    hotelImgInterfage: 'https://www.wordming.cn/static/json/hotelInfo.json?hotalId='
+    hotelListInterfage:'https://route.showapi.com/1450-1?showapi_appid=65611&showapi_sign=160177dac6604f0d947485ebbe89e94d&cityName=',
+    hotelImgInterfage:'https://route.showapi.com/1450-3?showapi_appid=65611&showapi_sign=160177dac6604f0d947485ebbe89e94d&hotalId='
+    // //模拟数据接口
+    // hotelListInterfage: 'https://www.wordming.cn/static/json/searchHotel.json?cityName=',
+    // hotelImgInterfage: 'https://www.wordming.cn/static/json/hotelInfo.json?hotalId='
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    wx.pageScrollTo({
+      scrollTop: 0,
+      duration: 300
+    })
+    this.getData(this.data.hotelListInterfage + app.city, this.getDataSucc);
+    console.log(app.startTime)
+    if (app.startTime && app.endTime && app.days) {
+      
+      this.changeData();
+    } else {
+      this.setDefaultTime();
+    }
   },
 
   /**
@@ -41,17 +54,20 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
-    wx.pageScrollTo({
-      scrollTop: 0,
-      duration: 300
+    console.log(app.city)
+    this.setData({
+      i:0
     })
-    this.getData(this.data.hotelListInterfage + app.city, this.getDataSucc);
-    if(app.startTime && app.endTime && app.days){
-      this.changeData();
-    } else {
-      this.setDefaultTime();
+    if (this.data.city !== app.city) {
+      this.setData({
+        city:app.city
+      })
+      this.getData(this.data.hotelListInterfage + app.city, this.getDataSucc);
     }
+    if (this.data.startTime !== app.startTime || this.data.endTime !== app.endTime) {
+      this.changeData();
+    }
+   
   },
   changeData() {
     var showStartTime = app.startTime.split('-')[1] + '月' + app.startTime.split('-')[2] + '日'
@@ -69,25 +85,32 @@ Page({
   setDefaultTime() {
     var dd = new Date();
     var d = dd.getDate();
+    var m1 = dd.getMonth() + 1;
+    var y1 = dd.getFullYear();
+
+
     dd.setDate(d + 1);
-    var y = dd.getFullYear();
-    var m = dd.getMonth() + 1;
+    var y2 = dd.getFullYear();
+    var m2 = dd.getMonth() + 1;
     var nextd = dd.getDate();
-    if(m<10){
-      m = "0" + m
+    if (m1 < 10) {
+      m1 = "0" + m1
     }
-    if(d<10){
+    if (m2 < 10) {
+      m2 = "0" + m2
+    }
+    if (d < 10) {
       d = "0" + d
     }
-    if(nextd < 10) {
-      nextd = "0" + d
+    if (nextd < 10) {
+      nextd = "0" + nextd
     }
     this.setData({
       city: app.city,
-      showStartTime: m + "月" + d + '日',
-      showEndTime:  m + "月" + nextd + '日',
-      startTime: y + "-" + m + "-" + d,
-      endTime: y + "-" + m + "-" + nextd
+      showStartTime: m1 + "月" + d + '日',
+      showEndTime:  m2 + "月" + nextd + '日',
+      startTime: y1 + "-" + m1 + "-" + d,
+      endTime: y2 + "-" + m2 + "-" + nextd
     })
   },
   changeDay() {
@@ -106,6 +129,9 @@ Page({
     })
   },
   getLocation() {
+    this.setData({
+      i:0
+    })
     wx.showLoading({
       title: '正在定位……',
       mask: true
@@ -147,47 +173,72 @@ Page({
     wx.request({
       url: url,
       success: fn.bind(this),
-      fail: this.getDataError.bind(this),
-      complete: this.ajaxComplete.bind(this)
+      fail: this.getDataError.bind(this)
     })
   },
   getDataSucc(res) {
+    if(res.data.showapi_res_code === -1 && res.data.showapi_res_error !==''){
+      wx.hideLoading()
+      wx.showToast({
+        title: res.data.showapi_res_error,
+        icon:'none',
+        duration:1500
+      })
+      return 
+    }
     if (res.data) {
-      var list = res.data.showapi_res_body.contentlist.splice(0,4)
-      for(var m = 0;m<4;m++) {
-        this.setData({
-          hotelList: list,
-          mainImg: []
-        })
-      }
+      var list = res.data.showapi_res_body.contentlist.splice(0,8)
+      console.log(list)
+      this.setData({
+        hotelList: list,
+      })
+      console.log(this.data.hotelList.length)
       for (var i = 0; i < this.data.hotelList.length;i++) {
-        this.getData(this.data.hotelImgInterfage + this.data.hotelList[i].hotalId, this.getImgSucc)
+        this.getImgRequest(this.data.hotelImgInterfage + this.data.hotelList[i].hotalId, this.getImgSucc)
       }
     } else {
       console.log("数据为空")
     }
 
   },
+  getImgRequest(url,fn){
+    wx.showLoading({
+      title: '正在加载……',
+      mask: true
+    })
+    wx.request({
+      url: url,
+      complete: fn.bind(this),
+      fail: this.getDataError.bind(this)
+    })
+  },
   getImgSucc(res) {
-    if (res.data.showapi_res_body){
+    console.log(res)
+    if (res.data.showapi_res_code ===0&&res.data.showapi_res_body.imgList){
       app.swiperHotel.push(res.data.showapi_res_body)
-      var list = res.data.showapi_res_body.imgList;
-      
-      for (var _i =0 ;_i< list.length;_i++ ){
-        if (list[_i].isHotalDefault === 1) {
-          this.data.mainImg.push(list[_i])
-          break;
+      // for (var _i = 0; _i < res.data.showapi_res_body.imgList.length;_i++ ){
+      //   if (res.data.showapi_res_body.imgList[_i].isHotalDefault === 1) {
+          
+      //     break;
+      //   }
+      // }
+      var imgUrl = res.data.showapi_res_body.imgList[0].imgUrl
+      for (var h = 0; h < this.data.hotelList.length; h++) {
+        if (this.data.hotelList[h].hotalId == res.data.showapi_res_body.hotalId) {
+          this.data.hotelList[h].imgUrl = imgUrl
         }
-      }
-      if (this.data.mainImg.length === this.data.hotelList.length) {
-        for(var j =0;j<this.data.mainImg.length;j++){
-          this.data.hotelList[j].imgUrl = this.data.mainImg[j].imgUrl
-        }
-        this.setData({
-          hotelList: this.data.hotelList
-        })
+        // break;
       }
       
+      
+    }
+    this.data.i++
+    this.setData({
+      hotelList: this.data.hotelList,
+      autoplay: true
+    })
+    if(this.data.i === this.data.hotelList.length){
+      this.ajaxComplete()
     }
   },
   getDataError() {
@@ -202,6 +253,7 @@ Page({
     wx.stopPullDownRefresh()
   },
   onPullDownRefresh() {
+    this.data.i = 0;
     this.getData(this.data.hotelListInterfage + app.city, this.getDataSucc);
   },
   goHotelDetail(e) {
@@ -211,7 +263,7 @@ Page({
   },
   searchHotelList(){
     wx.navigateTo({
-      url: '/pages/hotel/hotelList/hotelList?city='+this.data.city,
+      url: '/pages/hotel/hotelList/hotelList?city='+app.city,
     })
   }
 })

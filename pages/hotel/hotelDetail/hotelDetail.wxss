@@ -83,6 +83,7 @@
 }
 .hotelPosition {
   display: flex;
+  position: relative;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
@@ -102,9 +103,10 @@
 .mapBtn{
   color: #2a93ff;
   font-size: 12px;
-  line-height: 16px;
+  height: 100%;
   display: flex;
   align-items: center;
+  
 }
 .icon-arrow-right {
   font-size: 18px;
@@ -340,4 +342,14 @@
 .rulesItem{
   font-size: 12px;
   margin-bottom: 10px;
+}
+.mapbg {
+  height:100%;
+  width:200rpx;
+  position:absolute;
+  right:0;
+  z-index:-1;
+  opacity:.3;
+  border-bottom-right-radius: 100px;
+
 }

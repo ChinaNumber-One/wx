@@ -49,7 +49,7 @@
   margin: 50px auto;
   border-radius: 10px;
 }
-.setting, .feedback, .grade, .contact, .vipcn, .travels, .selection, .safe{
+.outLogin, .feedback, .grade, .contact, .vipcn, .travels, .selection, .safe{
   background: #fff;
   display: flex;
   align-items: center;

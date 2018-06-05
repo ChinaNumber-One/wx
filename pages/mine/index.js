@@ -7,14 +7,14 @@ Page({
    */
   data: {
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    nickName:null,
-    userImg:null,
-    isLogin:false,
+    nickName: null,
+    userImg: null,
+    isLogin: false,
     userInfo: {},
-    height:0,
+    height: 0,
     noPhone: true,
-    userId:'绑定手机获取',
-    phone:null
+    userId: '绑定手机获取',
+    phone: null
   },
   /**
    * 生命周期函数--监听页面加载
@@ -22,7 +22,7 @@ Page({
   onLoad: function (options) {
     wx.getStorage({
       key: 'deviceInfo',
-      success: function(res) {
+      success: function (res) {
         this.setData({
           height: res.data.windowHeight
         })
@@ -30,43 +30,32 @@ Page({
     })
     wx.getStorage({
       key: 'USER_INFO',
-      success: (res)=> {
-        if(res.data.isLogin){
+      success: (res) => {
+        if (res.data.isLogin) {
           this.setData({
-            isLogin:res.data.isLogin,
+            isLogin: res.data.isLogin,
             userImg: res.data.userImg,
             nickName: res.data.nickName,
           })
         }
       },
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+    }),
     wx.getStorage({
       key: 'ISLOGIN',
       success: (res) => {
         this.setData({
           userId: res.data.userId,
-          phone : res.data.phone
+          phone: res.data.phone
         })
       },
-      complete: (res)=>{
+      complete: (res) => {
         if (res.data && res.data.phone) {
           this.getUserInfo()
+
           this.setData({
             noPhone: false
           })
+          console.log(this.data.noPhone)
         } else {
           wx.navigateTo({
             url: '/pages/mine/safeCenter/safeCenter',
@@ -78,21 +67,53 @@ Page({
       scrollTop: 0,
       duration: 300
     })
-    
+
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    wx.getStorage({
+      key: 'ISLOGIN',
+      success: (res) => {
+        this.setData({
+          userId: res.data.userId,
+          phone: res.data.phone
+        })
+      },
+      complete: (res) => {
+        if (res.data && res.data.phone) {
+          this.getUserInfo()
+
+          this.setData({
+            noPhone: false
+          })
+          console.log(this.data.noPhone)
+        }
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    
+
   },
 
   /**
@@ -133,44 +154,65 @@ Page({
     }
   },
   getUserInfo() {
-    wx.request({
-      url: 'https://www.wordming.cn/common/mine.html',
-      data: {
-        id: this.data.userId
-      },
-      success: (res)=> {
-        if (!res.data.data.headImg) {
-          return false
-        }
-        wx.setStorage({
-          key: 'USER_INFO',
-          data: {
-            isLogin:true,
-            userImg: 'https://www.wordming.cn' + res.data.data.headImg,
-            nickName: res.data.data.nickname,
-            sex: res.data.data.sex,
-            birth: res.data.data.birth,
-            desc: res.data.data.desc,
-            attentionNum: res.data.data.attentionNum,
-            fansNum: res.data.data.fansNum,
-          },
-          complete: data => {
-            this.setData({
-              isLogin: true,
-              userImg: 'https://www.wordming.cn' + res.data.data.headImg,
-              nickName: res.data.data.nickname,
-              // desc: res.data.data.desc,
-              // attentionNum: res.data.data.attentionNum,
-              // fansNum: res.data.data.fansNum,
-            })
-          }
+    wx.getStorage({
+      key: 'ISLOGIN',
+      success: (res) => {
+        this.setData({
+          userId: res.data.userId,
+          phone: res.data.phone
         })
+      },
+      complete: (res) => {
+        if (res.data && res.data.phone) {
+          this.setData({
+            noPhone: false
+          })
+          wx.request({
+            url: 'https://www.wordming.cn/common/mine.html',
+            data: {
+              id: this.data.userId
+            },
+            success: (res) => {
+              if (!res.data.data.headImg) {
+                return false
+              }
+              wx.setStorage({
+                key: 'USER_INFO',
+                data: {
+                  isLogin: true,
+                  userImg: 'https://www.wordming.cn' + res.data.data.headImg,
+                  nickName: res.data.data.nickname,
+                  sex: res.data.data.sex,
+                  birth: res.data.data.birth,
+                  desc: res.data.data.desc,
+                  attentionNum: res.data.data.attentionNum,
+                  fansNum: res.data.data.fansNum,
+                },
+                complete: data => {
+                  this.setData({
+                    isLogin: true,
+                    userImg: 'https://www.wordming.cn' + res.data.data.headImg,
+                    nickName: res.data.data.nickname,
+                    // desc: res.data.data.desc,
+                    // attentionNum: res.data.data.attentionNum,
+                    // fansNum: res.data.data.fansNum,
+                  })
+                }
+              })
+            }
+          })
+        } else {
+          wx.navigateTo({
+            url: '/pages/mine/safeCenter/safeCenter',
+          })
+        }
       }
     })
+    
   },
   bindGetUserInfo(e) {
     wx.showLoading({
-      title: '正在获取头像，昵称',
+      title: '获取头像昵称……',
     })
     var userImg = (JSON.parse(e.detail.rawData).avatarUrl)
     var nickName = (JSON.parse(e.detail.rawData).nickName)
@@ -180,7 +222,7 @@ Page({
     }
     wx.downloadFile({
       url: userImg, //仅为示例，并非真实的资源
-      success: (res)=> {
+      success: (res) => {
         // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
 
         wx.uploadFile({
@@ -194,11 +236,37 @@ Page({
             'sex': '男',
             'desc': '这个人很懒，什么都没写～'
           },
-          success:  (res)=> {
+          success: (res) => {
             wx.hideLoading()
             this.getUserInfo();
           }
         })
+      }
+    })
+  },
+  outLogin() {
+    if(!this.data.isLogin){
+      wx.showToast({
+        title: '您还未登陆！',
+        icon:'none'
+      })
+      return
+    }
+    this.setData({
+      isLogin: false
+    })
+    wx.showModal({
+      title: '确定要退出登陆？',
+      content: '退出登陆返回首页',
+      success: (res) => {
+        if (res.confirm) {
+          wx.clearStorage()
+          wx.navigateTo({
+            url: '/pages/mine/safeCenter/safeCenter',
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
       }
     })
   }

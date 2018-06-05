@@ -25,7 +25,8 @@
     "pages/mine/myVisits/myVisits",
     "pages/mine/changeInfo/changeInfo",
     "pages/ticket/index",
-    "pages/ticket/ticketList/ticketList"
+    "pages/ticket/ticketList/ticketList",
+    "pages/hotel/hotelDetail/navigation/navigation"
   ],
   "window": {
     "backgroundTextStyle": "dark",

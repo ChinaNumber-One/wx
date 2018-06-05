@@ -119,7 +119,7 @@
 }
 .itemImg {
   flex:1;
-   height: 480rpx; 
+  height: 480rpx; 
   width: 100%; 
   border-radius: 10px;
 }
